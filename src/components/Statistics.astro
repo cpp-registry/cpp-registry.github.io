@@ -1,0 +1,133 @@
+---
+import "../styles/global.css";
+import registry from "../../registry.json";
+
+const projects = Object.entries(registry).map(([id, project]) => ({
+  id,
+  ...project,
+}));
+
+const maintainers = new Set(projects.map((project) => project.owner));
+
+const languages = new Set(
+  projects
+    .map((project) => project.language ?? project.langauge)
+    .filter(Boolean),
+);
+
+const licenses = new Set(
+  projects.map((project) => project.license).filter(Boolean),
+);
+
+const cppStandards = new Set(
+  projects.map((project) => project.cppstd).filter(Boolean),
+);
+---
+
+<section class="statistics">
+  <div class="statistics-header">
+    <span class="info-label">REGISTRY STATISTICS</span>
+  </div>
+
+  <div class="statistics-grid">
+    <div class="stat">
+      <span class="stat-value">{projects.length}</span>
+      <span class="stat-label">PROJECTS</span>
+    </div>
+
+    <div class="stat">
+      <span class="stat-value">{maintainers.size}</span>
+      <span class="stat-label">MAINTAINERS</span>
+    </div>
+
+    <div class="stat">
+      <span class="stat-value">{languages.size}</span>
+      <span class="stat-label">LANGUAGES</span>
+    </div>
+
+    <div class="stat">
+      <span class="stat-value">{licenses.size}</span>
+      <span class="stat-label">LICENSES</span>
+    </div>
+
+    <div class="stat">
+      <span class="stat-value">{cppStandards.size}</span>
+      <span class="stat-label">C++ STANDARDS</span>
+    </div>
+  </div>
+</section>
+
+<style>
+  .statistics {
+    margin: 3rem 0 2rem;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .statistics-header {
+    padding: 0.8rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .statistics-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    padding: 1.25rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat:last-child {
+    border-right: 0;
+  }
+
+  .stat-value {
+    font-size: 1.6rem;
+    font-weight: 600;
+    letter-spacing: -0.04em;
+  }
+
+  .stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+  }
+
+  @media (max-width: 800px) {
+    .statistics-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .stat:nth-child(3) {
+      border-right: 0;
+    }
+
+    .stat:nth-child(-n + 3) {
+      border-bottom: 1px solid var(--border);
+    }
+  }
+
+  @media (max-width: 500px) {
+    .statistics-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat:nth-child(3) {
+      border-right: 1px solid var(--border);
+    }
+
+    .stat:nth-child(2n) {
+      border-right: 0;
+    }
+
+    .stat:nth-child(n + 3) {
+      border-bottom: 0;
+    }
+  }
+</style>

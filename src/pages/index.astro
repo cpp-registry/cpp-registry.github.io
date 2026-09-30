@@ -3,6 +3,7 @@ import "../styles/global.css";
 import registry from "../../registry.json";
 import Head from "../components/Head.astro";
 import Layout from "../layouts/Layout.astro";
+import Statistics from "../components/Statistics.astro";
 
 const projects = Object.entries(registry).map(([id, project]) => ({
   id,
@@ -68,8 +69,8 @@ const projects = Object.entries(registry).map(([id, project]) => ({
 
     <div class="registry-info">
       <div>
-        <span class="info-label">PROJECTS</span>
-        <strong>{projects.length}</strong>
+        <span class="info-label">MADE FOR</span>
+        <strong>C++</strong>
       </div>
 
       <div>
@@ -89,7 +90,7 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       <div>
         <span class="info-label">SOURCE</span>
         <a
-          href="https://github.com/your-org/your-repo"
+          href="https://github.com/cpp-registry/cpp-registry.github.io"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -97,6 +98,8 @@ const projects = Object.entries(registry).map(([id, project]) => ({
         </a>
       </div>
     </div>
+
+    <Statistics />
 
     <section>
       <div class="results-header">
