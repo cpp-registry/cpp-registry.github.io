@@ -1,6 +1,13 @@
 # to register user automaticly so they dont have to do it manually
 #
 # only for admins
+#
+#
+# Stuff which needs to be added to the docs
+#
+# Available Libary types:
+# - single-header
+# - header+source
 
 fltk:
   repos:
@@ -10,11 +17,19 @@ fltk:
       description: "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development"
       language: C++
 
-wxwidgets:
+immediate-mode-ui:
   repos:
-    wxwidgets:
-      description: "Cross-Platform C++ GUI Library"
-      langauge: C++
+    nuklear:
+      description: "A single-header ANSI C immediate mode cross-platform GUI library"
+      language: C
+
+jbeder:
+  repos:
+    yaml-cpp:
+      description: "A YAML parser and emitter in C++"
+      language: C++
+      license: MIT
+      cppstd: 11
 
 #
 # meemknight
@@ -47,3 +62,17 @@ meemknight:
       description: ""
       language: C++
       cppstd: 17
+
+nlohmann:
+  repos:
+    json:
+      language: C++
+      cppstd: 11
+      description: "JSON for Modern C++"
+      license: MIT
+
+wxwidgets:
+  repos:
+    wxwidgets:
+      description: "Cross-Platform C++ GUI Library"
+      langauge: C++
