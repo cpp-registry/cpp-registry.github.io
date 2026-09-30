@@ -688,13 +688,6 @@ bkaradzic:
       license: BSD-2-Clause
       cppstd: 11
 
-bevyengine:
-  repos:
-    bevy:
-      description: "A refreshingly simple data-driven game engine built in Rust (nur zur Vollstaendigkeit, nicht C++)"
-      language: Rust
-      license: MIT / Apache-2.0
-
 flaxengine:
   repos:
     FlaxEngine:
@@ -724,13 +717,6 @@ raysan5-extras:
       description: "A simple and easy-to-use immediate-mode gui library"
       language: C
       license: zlib
-
-libgdx:
-  repos:
-    libgdx:
-      description: "Desktop/Android/HTML5/iOS Java game development framework (nur zur Vollstaendigkeit, nicht C++)"
-      language: Java
-      license: Apache-2.0
 
 wicked-engine:
   repos:
