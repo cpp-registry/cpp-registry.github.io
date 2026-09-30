@@ -82,4 +82,4 @@ wxwidgets:
   repos:
     wxwidgets:
       description: "Cross-Platform C++ GUI Library"
-      langauge: C++
+      language: C++

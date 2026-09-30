@@ -2,7 +2,7 @@
 import "../styles/global.css";
 import registry from "../../registry.json";
 import Head from "../components/Head.astro";
-import Header from "../layouts/Header.astro";
+import Layout from "../layouts/Layout.astro";
 
 const projects = Object.entries(registry).map(([id, project]) => ({
   id,
@@ -10,175 +10,270 @@ const projects = Object.entries(registry).map(([id, project]) => ({
 }));
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>C++ Registry</title>
-    <meta
-      name="description"
-      content="A registry of C++ libraries and projects."
-    />
-    <Head />
-  </head>
-  <body>
-    <main class="home">
-      <header class="hero">
-        <p class="eyebrow">C++ REGISTRY</p>
+<Layout>
+  <main class="home">
+    <header class="hero">
+      <p class="eyebrow">C++ REGISTRY</p>
 
-        <h1>Find C++ projects.</h1>
+      <h1>Find C++ projects.</h1>
 
-        <p class="subtitle">
-          A community registry of C++ libraries, tools and projects.
-        </p>
+      <p class="subtitle">
+        A community registry of C++ libraries, tools and projects.
+      </p>
 
-        <div class="search-wrapper">
-          <svg
-            class="search-icon"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            aria-hidden="true"
-          >
-            <circle cx="11" cy="11" r="7"></circle>
-            <path d="m20 20-4-4"></path>
-          </svg>
+      <div class="search-wrapper">
+        <svg
+          class="search-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <path d="m20 20-4-4"></path>
+        </svg>
 
-          <input
-            id="search"
-            type="search"
-            placeholder="Search projects..."
-            autocomplete="off"
-            autofocus
-          />
+        <input
+          id="search"
+          type="search"
+          placeholder="Search projects..."
+          autocomplete="off"
+          autofocus
+        />
 
-          <kbd>/</kbd>
-        </div>
-      </header>
-
-      <div class="registry-info">
-        <div>
-          <span class="info-label">PROJECTS</span>
-          <strong>{projects.length}</strong>
-        </div>
-
-        <div>
-          <span class="info-label">MAINTAINED BY</span>
-          <strong>THE COMMUNITY</strong>
-        </div>
-
-        <div>
-          <span class="info-label">REGISTRATION</span>
-          <strong
-            >OPEN <a href="https://github.com/cpp-registry/register"
-              >(Click here)</a
-            ></strong
-          >
-        </div>
-
-        <div>
-          <span class="info-label">SOURCE</span>
-          <a
-            href="https://github.com/your-org/your-repo"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            GITHUB →
-          </a>
-        </div>
+        <kbd>/</kbd>
       </div>
 
-      <section>
-        <div class="results-header">
-          <span id="result-count">
-            {projects.length} projects
-          </span>
-        </div>
+      <div class="search-filters">
+        <select id="language-filter" aria-label="Filter by language">
+          <option value="">All languages</option>
+        </select>
 
-        <div id="results" class="results">
-          {
-            projects.map((project) => (
-              <a
-                class="project"
-                href={`/~/${project.owner}/${project.repo}`}
-                data-search={`
-                ${project.repo}
-                ${project.owner}
-                ${project.description ?? ""}
-                ${project.license ?? ""}
-              `.toLowerCase()}
-              >
-                <div class="project-main">
-                  <h2>{project.repo}</h2>
+        <select id="license-filter" aria-label="Filter by license">
+          <option value="">All licenses</option>
+        </select>
 
-                  {project.description && <p>{project.description}</p>}
-                </div>
+        <select id="cppstd-filter" aria-label="Filter by C++ standard">
+          <option value="">All standards</option>
+        </select>
 
-                <div class="project-meta">
-                  <span>{project.owner}</span>
+        <select id="libtype-filter" aria-label="Filter by library type">
+          <option value="">All types</option>
+        </select>
 
-                  {project.license && (
-                    <span class="license">{project.license}</span>
-                  )}
-                </div>
-              </a>
-            ))
-          }
-        </div>
+        <button id="clear-filters" type="button" hidden> Clear filters </button>
+      </div>
+    </header>
 
-        <div id="no-results" class="no-results" hidden>
-          <h2>No projects found</h2>
-          <p>Try a different search term.</p>
-        </div>
-      </section>
-    </main>
+    <div class="registry-info">
+      <div>
+        <span class="info-label">PROJECTS</span>
+        <strong>{projects.length}</strong>
+      </div>
 
-    <script>
-      const input = document.querySelector("#search");
-      const results = document.querySelector("#results");
-      const noResults = document.querySelector("#no-results");
-      const resultCount = document.querySelector("#result-count");
-      const projects = Array.from(document.querySelectorAll(".project"));
+      <div>
+        <span class="info-label">MAINTAINED BY</span>
+        <strong>THE COMMUNITY</strong>
+      </div>
 
-      function search(query) {
-        const normalized = query.trim().toLowerCase();
+      <div>
+        <span class="info-label">REGISTRATION</span>
+        <strong
+          >OPEN <a href="https://github.com/cpp-registry/register"
+            >(Click here)</a
+          ></strong
+        >
+      </div>
 
-        let visible = 0;
+      <div>
+        <span class="info-label">SOURCE</span>
+        <a
+          href="https://github.com/your-org/your-repo"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          GITHUB →
+        </a>
+      </div>
+    </div>
 
-        for (const project of projects) {
-          const text = project.dataset.search ?? "";
-          const matches = !normalized || text.includes(normalized);
+    <section>
+      <div class="results-header">
+        <span id="result-count">
+          {projects.length} projects
+        </span>
+      </div>
 
-          project.hidden = !matches;
+      <div id="results" class="results">
+        {
+          projects.map((project) => (
+            <a
+              class="project"
+              href={`/~/${project.owner}/${project.repo}`}
+              data-search={`
+    ${project.repo}
+    ${project.owner}
+    ${project.description ?? ""}
+    ${project.license ?? ""}
+    ${project.language ?? project.langauge ?? ""}
+    ${project.libtype ?? ""}
+  `.toLowerCase()}
+              data-language={project.language ?? project.langauge ?? ""}
+              data-license={project.license ?? ""}
+              data-cppstd={project.cppstd ?? ""}
+              data-libtype={project.libtype ?? ""}
+            >
+              <div class="project-main">
+                <h2>{project.repo}</h2>
 
-          if (matches) {
-            visible++;
-          }
+                {project.description && <p>{project.description}</p>}
+              </div>
+
+              <div class="project-meta">
+                <span>{project.owner}</span>
+
+                {project.language && <span>{project.language}</span>}
+
+                {project.license && (
+                  <span class="license">{project.license}</span>
+                )}
+              </div>
+            </a>
+          ))
         }
+      </div>
 
-        noResults.hidden = visible !== 0;
+      <div id="no-results" class="no-results" hidden>
+        <h2>No projects found</h2>
+        <p>Try a different search term.</p>
+      </div>
+    </section>
+  </main>
 
-        resultCount.textContent = `${visible} ${visible === 1 ? "project" : "projects"}`;
+  <script>
+    const input = document.querySelector("#search");
+    const noResults = document.querySelector("#no-results");
+    const resultCount = document.querySelector("#result-count");
+
+    const languageFilter = document.querySelector("#language-filter");
+    const licenseFilter = document.querySelector("#license-filter");
+    const cppstdFilter = document.querySelector("#cppstd-filter");
+    const libtypeFilter = document.querySelector("#libtype-filter");
+    const clearFilters = document.querySelector("#clear-filters");
+
+    const projects = Array.from(document.querySelectorAll(".project"));
+
+    function getValues(attribute) {
+      return [
+        ...new Set(
+          projects.map((project) => project.dataset[attribute]).filter(Boolean),
+        ),
+      ].sort((a, b) =>
+        a.localeCompare(b, undefined, {
+          numeric: true,
+          sensitivity: "base",
+        }),
+      );
+    }
+
+    function addOptions(select, values) {
+      for (const value of values) {
+        const option = document.createElement("option");
+
+        option.value = value;
+        option.textContent = value;
+
+        select.appendChild(option);
+      }
+    }
+
+    addOptions(languageFilter, getValues("language"));
+    addOptions(licenseFilter, getValues("license"));
+    addOptions(cppstdFilter, getValues("cppstd"));
+    addOptions(libtypeFilter, getValues("libtype"));
+
+    function search() {
+      const query = input.value.trim().toLowerCase();
+
+      const language = languageFilter.value;
+      const license = licenseFilter.value;
+      const cppstd = cppstdFilter.value;
+      const libtype = libtypeFilter.value;
+
+      let visible = 0;
+
+      for (const project of projects) {
+        const text = project.dataset.search ?? "";
+
+        const matchesSearch = !query || text.includes(query);
+
+        const matchesLanguage =
+          !language || project.dataset.language === language;
+
+        const matchesLicense = !license || project.dataset.license === license;
+
+        const matchesCppstd = !cppstd || project.dataset.cppstd === cppstd;
+
+        const matchesLibtype = !libtype || project.dataset.libtype === libtype;
+
+        const matches =
+          matchesSearch &&
+          matchesLanguage &&
+          matchesLicense &&
+          matchesCppstd &&
+          matchesLibtype;
+
+        project.hidden = !matches;
+
+        if (matches) {
+          visible++;
+        }
       }
 
-      input.addEventListener("input", () => {
-        search(input.value);
-      });
+      noResults.hidden = visible !== 0;
 
-      document.addEventListener("keydown", (event) => {
-        if (event.key === "/" && document.activeElement !== input) {
-          event.preventDefault();
-          input.focus();
-        }
+      resultCount.textContent = `${visible} ${visible === 1 ? "project" : "projects"}`;
 
-        if (event.key === "Escape" && document.activeElement === input) {
-          input.value = "";
-          search("");
-          input.blur();
-        }
-      });
-    </script>
-  </body>
-</html>
+      const hasFilters = query || language || license || cppstd || libtype;
+
+      clearFilters.hidden = !hasFilters;
+    }
+
+    input.addEventListener("input", search);
+
+    languageFilter.addEventListener("change", search);
+    licenseFilter.addEventListener("change", search);
+    cppstdFilter.addEventListener("change", search);
+    libtypeFilter.addEventListener("change", search);
+
+    clearFilters.addEventListener("click", () => {
+      input.value = "";
+
+      languageFilter.value = "";
+      licenseFilter.value = "";
+      cppstdFilter.value = "";
+      libtypeFilter.value = "";
+
+      search();
+      input.focus();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (
+        event.key === "/" &&
+        document.activeElement !== input &&
+        document.activeElement?.tagName !== "SELECT"
+      ) {
+        event.preventDefault();
+        input.focus();
+      }
+
+      if (event.key === "Escape" && document.activeElement === input) {
+        input.value = "";
+        search();
+        input.blur();
+      }
+    });
+  </script>
+</Layout>

@@ -1,6 +1,6 @@
 ---
 import registry from "../../../registry.json";
-import Head from "../../components/Head.astro";
+import Layout from "../../layouts/Layout.astro";
 import "../../styles/global.css";
 
 export function getStaticPaths() {
@@ -24,79 +24,62 @@ export function getStaticPaths() {
 const { username, projects } = Astro.props;
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
+<Layout description={`${username}'s C++ projects on the C++ Registry.`}>
+  <main>
+    <nav>
+      <a href="/">C++ Registry</a>
+      {" "}/{" "}
+      {username}
+    </nav>
 
-    <title>{username} — C++ Registry</title>
+    <header class="profile-header">
+      <p class="eyebrow">USER</p>
 
-    <meta
-      name="description"
-      content={`${username}'s C++ projects on the C++ Registry.`}
-    />
+      <h1>{username}</h1>
 
-    <Head />
-  </head>
+      <p class="subtitle">
+        {projects.length}
+        {projects.length === 1 ? " project" : " projects"} in the C++ Registry.
+      </p>
 
-  <body>
-    <main>
-      <nav>
-        <a href="/">C++ Registry</a>
-        {" "}/{" "}
-        {username}
-      </nav>
+      <a
+        href={`https://github.com/${username}`}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View on GitHub →
+      </a>
+    </header>
 
-      <header class="profile-header">
-        <p class="eyebrow">USER</p>
-
-        <h1>{username}</h1>
-
-        <p class="subtitle">
+    <section>
+      <div class="results-header">
+        <span>
           {projects.length}
-          {projects.length === 1 ? " project" : " projects"} in the C++ Registry.
-        </p>
+          {projects.length === 1 ? " project" : " projects"}
+        </span>
+      </div>
 
-        <a
-          href={`https://github.com/${username}`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View on GitHub →
-        </a>
-      </header>
+      <div class="results">
+        {
+          projects.map((project) => (
+            <a class="project" href={`/~/${project.owner}/${project.repo}`}>
+              <div class="project-main">
+                <h2>{project.repo}</h2>
 
-      <section>
-        <div class="results-header">
-          <span>
-            {projects.length}
-            {projects.length === 1 ? " project" : " projects"}
-          </span>
-        </div>
+                {project.description && <p>{project.description}</p>}
+              </div>
 
-        <div class="results">
-          {
-            projects.map((project) => (
-              <a class="project" href={`/~/${project.owner}/${project.repo}`}>
-                <div class="project-main">
-                  <h2>{project.repo}</h2>
+              <div class="project-meta">
+                {project.license && (
+                  <span class="license">{project.license}</span>
+                )}
 
-                  {project.description && <p>{project.description}</p>}
-                </div>
-
-                <div class="project-meta">
-                  {project.license && (
-                    <span class="license">{project.license}</span>
-                  )}
-
-                  {project.cppstd && <span>C++{project.cppstd}</span>}
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </section>
-    </main>
-  </body>
-</html>
+                {project.cppstd && <span>C++{project.cppstd}</span>}
+              </div>
+            </a>
+          ))
+        }
+      </div>
+    </section>
+  </main>
+</Layout>
