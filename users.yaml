@@ -1,5 +1,6 @@
 # User which are registred in the regsitry
 # when set to false, the user is banned
 
+cpp-registry: true
 shadowdara: true
 weuritz8u: true

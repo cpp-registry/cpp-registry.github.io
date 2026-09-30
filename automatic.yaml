@@ -16,6 +16,9 @@ wxwidgets:
       description: "Cross-Platform C++ GUI Library"
       langauge: C++
 
+#
+# meemknight
+#
 meemknight:
   repos:
     safesave:
@@ -37,5 +40,10 @@ meemknight:
 
     gl3d:
       description: "A deferred physically based 3D renderer into a simple to use header-only library."
+      language: C++
+      cppstd: 17
+
+    profilerlib:
+      description: ""
       language: C++
       cppstd: 17
