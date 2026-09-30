@@ -1,4 +1,4 @@
-name: Run Bun Script
+name: Update Registry
 
 on:
   push:
