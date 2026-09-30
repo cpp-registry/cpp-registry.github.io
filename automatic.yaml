@@ -226,6 +226,7 @@ google:
       language: C++
       license: BSD-3-Clause
       cppstd: 17
+
     benchmark:
       description: "A microbenchmark support library"
       language: C++
@@ -501,6 +502,7 @@ thestk:
       language: C++
       license: MIT
       cppstd: 11
+
     stk:
       description: "The Synthesis ToolKit in C++ (STK) - audio signal processing and algorithmic synthesis classes"
       language: C++
@@ -513,14 +515,17 @@ xiph:
       description: "Ogg Bitstream Library"
       language: C
       license: BSD-3-Clause
+
     vorbis:
       description: "Reference implementation of the Ogg Vorbis audio format"
       language: C
       license: BSD-3-Clause
+
     opus:
       description: "Modern audio compression for the internet"
       language: C
       license: BSD-3-Clause
+
     flac:
       description: "Free Lossless Audio Codec"
       language: C
@@ -633,6 +638,7 @@ OGRECave:
       language: C++
       license: MIT
       cppstd: 11
+
     ogre-next:
       description: "Ogre 2.x branch - a scene-oriented, flexible 3D engine written in C++ with a focus on performance"
       language: C++
@@ -662,6 +668,7 @@ bkaradzic:
       language: C++
       license: BSD-2-Clause
       cppstd: 11
+
     bx:
       description: "Base library used across multiple projects"
       language: C++
