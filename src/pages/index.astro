@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import registry from "../../registry.json";
 import Head from "../components/Head.astro";
+import Header from "../layouts/Header.astro";
 
 const projects = Object.entries(registry).map(([id, project]) => ({
   id,
@@ -20,7 +21,8 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       content="A registry of C++ libraries and projects."
     />
     <Head />
-  </head><body>
+  </head>
+  <body>
     <main class="home">
       <header class="hero">
         <p class="eyebrow">C++ REGISTRY</p>
@@ -55,6 +57,38 @@ const projects = Object.entries(registry).map(([id, project]) => ({
           <kbd>/</kbd>
         </div>
       </header>
+
+      <div class="registry-info">
+        <div>
+          <span class="info-label">PROJECTS</span>
+          <strong>{projects.length}</strong>
+        </div>
+
+        <div>
+          <span class="info-label">MAINTAINED BY</span>
+          <strong>THE COMMUNITY</strong>
+        </div>
+
+        <div>
+          <span class="info-label">REGISTRATION</span>
+          <strong
+            >OPEN <a href="https://github.com/cpp-registry/register"
+              >(Click here)</a
+            ></strong
+          >
+        </div>
+
+        <div>
+          <span class="info-label">SOURCE</span>
+          <a
+            href="https://github.com/your-org/your-repo"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GITHUB →
+          </a>
+        </div>
+      </div>
 
       <section>
         <div class="results-header">

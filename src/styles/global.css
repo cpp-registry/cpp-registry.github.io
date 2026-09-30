@@ -326,3 +326,56 @@ main > a:hover {
     white-space: normal;
   }
 }
+
+.registry-info {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  margin: 3rem 0 2rem;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.registry-info > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1rem 1.25rem;
+  border-right: 1px solid var(--border);
+}
+
+.registry-info > div:last-child {
+  border-right: 0;
+}
+
+.info-label {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+
+.registry-info strong,
+.registry-info a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.registry-info a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 700px) {
+  .registry-info {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .registry-info > div:nth-child(2) {
+    border-right: 0;
+  }
+
+  .registry-info > div:nth-child(-n + 2) {
+    border-bottom: 1px solid var(--border);
+  }
+}

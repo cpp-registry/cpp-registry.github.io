@@ -8,3 +8,34 @@ fltk:
       cppstd: 11
       license: FLTK License
       description: "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development"
+      language: C++
+
+wxwidgets:
+  repos:
+    wxwidgets:
+      description: "Cross-Platform C++ GUI Library"
+      langauge: C++
+
+meemknight:
+  repos:
+    safesave:
+      description: "this library allows you to save data and if your program is forcefully stopped it will load a backup so you don't loose all the progress"
+      language: C++
+      license: MIT
+      cppstd: 17
+
+    glui:
+      description: "UI library inspired by imgui, it makes adding menus and submenus very easy!"
+      language: C++
+      cppstd: 17
+
+    gl2d:
+      description: "a simple 2d library made in opengl"
+      language: C++
+      cppstd: 17
+      license: MIT
+
+    gl3d:
+      description: "A deferred physically based 3D renderer into a simple to use header-only library."
+      language: C++
+      cppstd: 17

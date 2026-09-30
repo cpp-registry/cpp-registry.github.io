@@ -3,9 +3,34 @@
     "cppstd": 11,
     "license": "FLTK License",
     "description": "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development",
+    "language": "C++",
     "owner": "fltk",
     "repo": "fltk",
     "url": "https://github.com/fltk/fltk"
+  },
+  "wxwidgets/wxwidgets": {
+    "description": "Cross-Platform C++ GUI Library",
+    "langauge": "C++",
+    "owner": "wxwidgets",
+    "repo": "wxwidgets",
+    "url": "https://github.com/wxwidgets/wxwidgets"
+  },
+  "meemknight/safesave": {
+    "description": "this library allows you to save data and if your program is forcefully stopped it will load a backup so you don't loose all the progress",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 17,
+    "owner": "meemknight",
+    "repo": "safesave",
+    "url": "https://github.com/meemknight/safesave"
+  },
+  "meemknight/glui": {
+    "description": "UI library inspired by imgui, it makes adding menus and submenus very easy!",
+    "language": "C++",
+    "cppstd": 17,
+    "owner": "meemknight",
+    "repo": "glui",
+    "url": "https://github.com/meemknight/glui"
   },
   "shadowdara/argparser": {
     "description": "little argparser libary in C, port of the argparser libary from finder in go",
