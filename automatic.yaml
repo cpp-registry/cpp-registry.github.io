@@ -17,6 +17,13 @@ fltk:
       description: "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development"
       language: C++
 
+glfw:
+  repos:
+    glfw:
+      license: zlib
+      language: C
+      description: "A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input"
+
 immediate-mode-ui:
   repos:
     nuklear:
