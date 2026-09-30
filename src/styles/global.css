@@ -434,3 +434,36 @@ main > a:hover {
     width: 100%;
   }
 }
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0 4rem;
+}
+
+.pagination button {
+  border: 1px solid var(--border);
+  background: transparent;
+  color: inherit;
+  padding: 0.65rem 0.9rem;
+  font: inherit;
+  cursor: pointer;
+}
+
+.pagination button:hover:not(:disabled) {
+  background: var(--border);
+}
+
+.pagination button:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+#page-info {
+  min-width: 100px;
+  text-align: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}

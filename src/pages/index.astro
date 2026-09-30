@@ -129,7 +129,9 @@ const projects = Object.entries(registry).map(([id, project]) => ({
               <div class="project-meta">
                 <span>{project.owner}</span>
 
-                {project.language && <span>{project.language}</span>}
+                {(project.language || project.langauge) && (
+                  <span>{project.language ?? project.langauge}</span>
+                )}
 
                 {project.license && (
                   <span class="license">{project.license}</span>
@@ -144,6 +146,14 @@ const projects = Object.entries(registry).map(([id, project]) => ({
         <h2>No projects found</h2>
         <p>Try a different search term.</p>
       </div>
+
+      <nav class="pagination" aria-label="Project pagination">
+        <button id="prev-page" type="button"> ← Previous </button>
+
+        <span id="page-info"></span>
+
+        <button id="next-page" type="button"> Next → </button>
+      </nav>
     </section>
   </main>
 
@@ -158,7 +168,31 @@ const projects = Object.entries(registry).map(([id, project]) => ({
     const libtypeFilter = document.querySelector("#libtype-filter");
     const clearFilters = document.querySelector("#clear-filters");
 
+    const prevPage = document.querySelector("#prev-page");
+    const nextPage = document.querySelector("#next-page");
+    const pageInfo = document.querySelector("#page-info");
+
     const projects = Array.from(document.querySelectorAll(".project"));
+
+    const projectsPerPage = 30;
+
+    const url = new URL(window.location.href);
+    const urlPage = Number.parseInt(url.searchParams.get("page") ?? "1", 10);
+
+    let currentPage = Number.isFinite(urlPage) && urlPage > 0 ? urlPage : 1;
+    let filteredProjects = [...projects];
+
+    function updateUrl() {
+      const url = new URL(window.location.href);
+
+      if (currentPage === 1) {
+        url.searchParams.delete("page");
+      } else {
+        url.searchParams.set("page", currentPage);
+      }
+
+      window.history.replaceState({}, "", url);
+    }
 
     function getValues(attribute) {
       return [
@@ -189,7 +223,43 @@ const projects = Object.entries(registry).map(([id, project]) => ({
     addOptions(cppstdFilter, getValues("cppstd"));
     addOptions(libtypeFilter, getValues("libtype"));
 
-    function search() {
+    function renderPage() {
+      const totalPages = Math.max(
+        1,
+        Math.ceil(filteredProjects.length / projectsPerPage),
+      );
+
+      if (currentPage > totalPages) {
+        currentPage = totalPages;
+      }
+
+      const start = (currentPage - 1) * projectsPerPage;
+      const end = start + projectsPerPage;
+
+      const visibleProjects = filteredProjects.slice(start, end);
+
+      for (const project of projects) {
+        project.hidden = !visibleProjects.includes(project);
+      }
+
+      noResults.hidden = filteredProjects.length !== 0;
+
+      resultCount.textContent = `${filteredProjects.length} ${
+        filteredProjects.length === 1 ? "project" : "projects"
+      }`;
+
+      pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+      prevPage.disabled = currentPage === 1;
+      nextPage.disabled = currentPage === totalPages;
+
+      const pagination = document.querySelector(".pagination");
+      pagination.hidden = totalPages <= 1;
+
+      updateUrl();
+    }
+
+    function search(resetPage = true) {
       const query = input.value.trim().toLowerCase();
 
       const language = languageFilter.value;
@@ -197,9 +267,7 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       const cppstd = cppstdFilter.value;
       const libtype = libtypeFilter.value;
 
-      let visible = 0;
-
-      for (const project of projects) {
+      filteredProjects = projects.filter((project) => {
         const text = project.dataset.search ?? "";
 
         const matchesSearch = !query || text.includes(query);
@@ -213,35 +281,63 @@ const projects = Object.entries(registry).map(([id, project]) => ({
 
         const matchesLibtype = !libtype || project.dataset.libtype === libtype;
 
-        const matches =
+        return (
           matchesSearch &&
           matchesLanguage &&
           matchesLicense &&
           matchesCppstd &&
-          matchesLibtype;
+          matchesLibtype
+        );
+      });
 
-        project.hidden = !matches;
-
-        if (matches) {
-          visible++;
-        }
+      if (resetPage) {
+        currentPage = 1;
       }
 
-      noResults.hidden = visible !== 0;
-
-      resultCount.textContent = `${visible} ${visible === 1 ? "project" : "projects"}`;
+      renderPage();
 
       const hasFilters = query || language || license || cppstd || libtype;
 
       clearFilters.hidden = !hasFilters;
     }
 
-    input.addEventListener("input", search);
+    input.addEventListener("input", () => {
+      search();
+    });
 
-    languageFilter.addEventListener("change", search);
-    licenseFilter.addEventListener("change", search);
-    cppstdFilter.addEventListener("change", search);
-    libtypeFilter.addEventListener("change", search);
+    languageFilter.addEventListener("change", () => {
+      search();
+    });
+
+    licenseFilter.addEventListener("change", () => {
+      search();
+    });
+
+    cppstdFilter.addEventListener("change", () => {
+      search();
+    });
+
+    libtypeFilter.addEventListener("change", () => {
+      search();
+    });
+
+    prevPage.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderPage();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
+
+    nextPage.addEventListener("click", () => {
+      const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderPage();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    });
 
     clearFilters.addEventListener("click", () => {
       input.value = "";
@@ -251,7 +347,10 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       cppstdFilter.value = "";
       libtypeFilter.value = "";
 
+      currentPage = 1;
+
       search();
+
       input.focus();
     });
 
@@ -271,5 +370,8 @@ const projects = Object.entries(registry).map(([id, project]) => ({
         input.blur();
       }
     });
+
+    // Initial render
+    renderPage();
   </script>
 </Layout>

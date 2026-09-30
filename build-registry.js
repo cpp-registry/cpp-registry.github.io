@@ -26,6 +26,7 @@ for (const [username, user] of Object.entries(automatic)) {
       owner: username,
       repo,
       url: `https://github.com/${username}/${repo}`,
+      automatic_registered: true,
     };
   }
 }

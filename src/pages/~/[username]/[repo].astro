@@ -68,5 +68,16 @@ const { project } = Astro.props;
     <a href={project.url} target="_blank" rel="noopener noreferrer">
       View on GitHub →
     </a>
+
+    {
+      project.automatic_registered && (
+        <p>
+          <i>
+            INFO: This project was registered automaticly, not by the owner of
+            the project
+          </i>
+        </p>
+      )
+    }
   </main>
 </Layout>

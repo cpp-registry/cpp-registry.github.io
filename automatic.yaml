@@ -464,3 +464,293 @@ pybind:
       language: C++
       license: BSD-3-Clause
       cppstd: 11
+
+#
+# Audio
+#
+mackron:
+  repos:
+    miniaudio:
+      description: "Audio playback and capture library written in C, in a single source file"
+      language: C
+      license: MIT / Public Domain
+
+kcat:
+  repos:
+    openal-soft:
+      description: "OpenAL Soft is a software implementation of the OpenAL 3D audio API"
+      language: C++
+      license: LGPL-2.0
+      cppstd: 14
+
+PortAudio:
+  repos:
+    portaudio:
+      description: "PortAudio is a cross-platform, open-source C language library for real-time audio input and output"
+      language: C
+      license: MIT
+
+thestk:
+  repos:
+    rtaudio:
+      description: "A set of C++ classes that provide a common API for realtime audio input/output across Linux, Macintosh OS X, and Windows"
+      language: C++
+      license: MIT
+      cppstd: 11
+    stk:
+      description: "The Synthesis ToolKit in C++ (STK) - audio signal processing and algorithmic synthesis classes"
+      language: C++
+      license: MIT
+      cppstd: 11
+
+xiph:
+  repos:
+    ogg:
+      description: "Ogg Bitstream Library"
+      language: C
+      license: BSD-3-Clause
+    vorbis:
+      description: "Reference implementation of the Ogg Vorbis audio format"
+      language: C
+      license: BSD-3-Clause
+    opus:
+      description: "Modern audio compression for the internet"
+      language: C
+      license: BSD-3-Clause
+    flac:
+      description: "Free Lossless Audio Codec"
+      language: C
+      license: BSD-3-Clause
+
+libsndfile:
+  repos:
+    libsndfile:
+      description: "A C library for reading and writing sound files containing sampled audio data"
+      language: C
+      license: LGPL-2.1
+
+juce-framework:
+  repos:
+    JUCE:
+      description: "JUCE is an open-source cross-platform C++ application framework for desktop and mobile applications, including VST/AU/AAX audio plug-ins"
+      language: C++
+      license: AGPL-3.0 / Commercial
+      cppstd: 17
+
+FluidSynth:
+  repos:
+    fluidsynth:
+      description: "Software synthesizer based on the SoundFont 2 specifications"
+      language: C
+      license: LGPL-2.1
+
+#
+# Kryptografie
+#
+openssl:
+  repos:
+    openssl:
+      description: "TLS/SSL and crypto library"
+      language: C
+      license: Apache-2.0
+
+weidai11:
+  repos:
+    cryptopp:
+      description: "free C++ class library of cryptographic schemes"
+      language: C++
+      license: BSL-1.0
+      cppstd: 11
+
+jedisct1:
+  repos:
+    libsodium:
+      description: "A modern, portable, easy to use crypto library"
+      language: C
+      license: ISC
+
+randombit:
+  repos:
+    botan:
+      description: "Cryptography Toolkit - C++ crypto library with TLS, X.509 and many algorithms"
+      language: C++
+      license: BSD-2-Clause
+      cppstd: 20
+
+Mbed-TLS:
+  repos:
+    mbedtls:
+      description: "An open source, portable, easy to use, readable and flexible TLS library, and reference implementation of the PSA Cryptography API"
+      language: C
+      license: Apache-2.0 / GPL-2.0
+
+wolfSSL:
+  repos:
+    wolfssl:
+      description: "The wolfSSL library is a small, fast, portable implementation of TLS/SSL for embedded devices to the cloud"
+      language: C
+      license: GPL-2.0 / Commercial
+
+BLAKE3-team:
+  repos:
+    BLAKE3:
+      description: "the official Rust and C implementations of the BLAKE3 cryptographic hash function"
+      language: C
+      license: CC0-1.0 / Apache-2.0
+
+kokke:
+  repos:
+    tiny-AES-c:
+      description: "Small portable AES128/192/256 in C"
+      language: C
+      license: Unlicense
+
+B-Con:
+  repos:
+    crypto-algorithms:
+      description: "Basic implementations of standard cryptography algorithms, like AES and SHA-1"
+      language: C
+      license: Public Domain
+
+gnutls:
+  repos:
+    gnutls:
+      description: "GnuTLS implements the TLS/SSL and DTLS protocols and technologies around them"
+      language: C
+      license: LGPL-2.1
+
+#
+# Game Engines / Game Frameworks
+#
+godotengine:
+  repos:
+    godot:
+      description: "Godot Engine - Multi-platform 2D and 3D game engine"
+      language: C++
+      license: MIT
+      cppstd: 17
+
+EpicGames:
+  repos:
+    UnrealEngine:
+      description: "Unreal Engine source code (access requires linking your GitHub account with an Epic Games account)"
+      language: C++
+      license: Unreal Engine EULA
+      cppstd: 17
+
+o3de:
+  repos:
+    o3de:
+      description: "Open 3D Engine (O3DE) is an Apache 2.0-licensed multi-platform 3D engine for AAA-quality games and simulations"
+      language: C++
+      license: Apache-2.0
+      cppstd: 17
+
+OGRECave:
+  repos:
+    ogre:
+      description: "scene-oriented, flexible 3D engine written in C++"
+      language: C++
+      license: MIT
+      cppstd: 11
+    ogre-next:
+      description: "Ogre 2.x branch - a scene-oriented, flexible 3D engine written in C++ with a focus on performance"
+      language: C++
+      license: MIT
+      cppstd: 11
+
+urho3d:
+  repos:
+    urho3d:
+      description: "Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++"
+      language: C++
+      license: MIT
+      cppstd: 11
+
+cocos2d:
+  repos:
+    cocos2d-x:
+      description: "Cocos2d-x is a suite of open-source, cross-platform, game-development tools"
+      language: C++
+      license: MIT
+      cppstd: 11
+
+bkaradzic:
+  repos:
+    bgfx:
+      description: "Cross-platform, graphics API agnostic, Bring Your Own Engine/Framework style rendering library"
+      language: C++
+      license: BSD-2-Clause
+      cppstd: 11
+    bx:
+      description: "Base library used across multiple projects"
+      language: C++
+      license: BSD-2-Clause
+      cppstd: 11
+
+bevyengine:
+  repos:
+    bevy:
+      description: "A refreshingly simple data-driven game engine built in Rust (nur zur Vollstaendigkeit, nicht C++)"
+      language: Rust
+      license: MIT / Apache-2.0
+
+flaxengine:
+  repos:
+    FlaxEngine:
+      description: "Flax Engine - multi-platform 3D game engine"
+      language: C++
+      license: Flax Engine EULA
+
+GodotJolt:
+  repos:
+    godot-jolt:
+      description: "Godot extension that lets you use Jolt Physics in Godot 4"
+      language: C++
+      license: MIT
+      cppstd: 17
+
+jrouwe:
+  repos:
+    JoltPhysics:
+      description: "A multi core friendly rigid body physics and collision detection library, suitable for games and VR applications"
+      language: C++
+      license: MIT
+      cppstd: 17
+
+raysan5-extras:
+  repos:
+    raygui:
+      description: "A simple and easy-to-use immediate-mode gui library"
+      language: C
+      license: zlib
+
+libgdx:
+  repos:
+    libgdx:
+      description: "Desktop/Android/HTML5/iOS Java game development framework (nur zur Vollstaendigkeit, nicht C++)"
+      language: Java
+      license: Apache-2.0
+
+wicked-engine:
+  repos:
+    WickedEngine:
+      description: "3D engine with modern graphics (DX12, Vulkan)"
+      language: C++
+      license: MIT
+      cppstd: 20
+
+ValveSoftware:
+  repos:
+    GameNetworkingSockets:
+      description: "Reliable & unreliable messages over UDP. Robust message fragmentation & reassembly. P2P networking / NAT traversal"
+      language: C++
+      license: BSD-3-Clause
+      cppstd: 11
+
+libretro:
+  repos:
+    RetroArch:
+      description: "Cross-platform, sophisticated frontend for the libretro API. Licensed GPLv3"
+      language: C
+      license: GPL-3.0
