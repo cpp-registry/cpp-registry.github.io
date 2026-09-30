@@ -6,7 +6,8 @@
     "cppstd": 17,
     "owner": "abseil",
     "repo": "abseil-cpp",
-    "url": "https://github.com/abseil/abseil-cpp"
+    "url": "https://github.com/abseil/abseil-cpp",
+    "automatic_registered": true
   },
   "ArthurSonzogni/FTXUI": {
     "description": "C++ functional terminal user interface library",
@@ -15,7 +16,8 @@
     "cppstd": 17,
     "owner": "ArthurSonzogni",
     "repo": "FTXUI",
-    "url": "https://github.com/ArthurSonzogni/FTXUI"
+    "url": "https://github.com/ArthurSonzogni/FTXUI",
+    "automatic_registered": true
   },
   "assimp/assimp": {
     "description": "The official Open-Asset-Importer-Library - import 3D model formats",
@@ -24,7 +26,55 @@
     "cppstd": 17,
     "owner": "assimp",
     "repo": "assimp",
-    "url": "https://github.com/assimp/assimp"
+    "url": "https://github.com/assimp/assimp",
+    "automatic_registered": true
+  },
+  "B-Con/crypto-algorithms": {
+    "description": "Basic implementations of standard cryptography algorithms, like AES and SHA-1",
+    "language": "C",
+    "license": "Public Domain",
+    "owner": "B-Con",
+    "repo": "crypto-algorithms",
+    "url": "https://github.com/B-Con/crypto-algorithms",
+    "automatic_registered": true
+  },
+  "bevyengine/bevy": {
+    "description": "A refreshingly simple data-driven game engine built in Rust (nur zur Vollstaendigkeit, nicht C++)",
+    "language": "Rust",
+    "license": "MIT / Apache-2.0",
+    "owner": "bevyengine",
+    "repo": "bevy",
+    "url": "https://github.com/bevyengine/bevy",
+    "automatic_registered": true
+  },
+  "bkaradzic/bgfx": {
+    "description": "Cross-platform, graphics API agnostic, Bring Your Own Engine/Framework style rendering library",
+    "language": "C++",
+    "license": "BSD-2-Clause",
+    "cppstd": 11,
+    "owner": "bkaradzic",
+    "repo": "bgfx",
+    "url": "https://github.com/bkaradzic/bgfx",
+    "automatic_registered": true
+  },
+  "bkaradzic/bx": {
+    "description": "Base library used across multiple projects",
+    "language": "C++",
+    "license": "BSD-2-Clause",
+    "cppstd": 11,
+    "owner": "bkaradzic",
+    "repo": "bx",
+    "url": "https://github.com/bkaradzic/bx",
+    "automatic_registered": true
+  },
+  "BLAKE3-team/BLAKE3": {
+    "description": "the official Rust and C implementations of the BLAKE3 cryptographic hash function",
+    "language": "C",
+    "license": "CC0-1.0 / Apache-2.0",
+    "owner": "BLAKE3-team",
+    "repo": "BLAKE3",
+    "url": "https://github.com/BLAKE3-team/BLAKE3",
+    "automatic_registered": true
   },
   "boostorg/boost": {
     "description": "Super-project for modularized Boost",
@@ -33,7 +83,8 @@
     "cppstd": 11,
     "owner": "boostorg",
     "repo": "boost",
-    "url": "https://github.com/boostorg/boost"
+    "url": "https://github.com/boostorg/boost",
+    "automatic_registered": true
   },
   "bulletphysics/bullet3": {
     "description": "Bullet Physics SDK: real-time collision detection and multi-physics simulation",
@@ -41,7 +92,8 @@
     "license": "zlib",
     "owner": "bulletphysics",
     "repo": "bullet3",
-    "url": "https://github.com/bulletphysics/bullet3"
+    "url": "https://github.com/bulletphysics/bullet3",
+    "automatic_registered": true
   },
   "catchorg/Catch2": {
     "description": "A modern, C++-native, test framework for unit-tests, TDD and BDD",
@@ -50,7 +102,8 @@
     "cppstd": 14,
     "owner": "catchorg",
     "repo": "Catch2",
-    "url": "https://github.com/catchorg/Catch2"
+    "url": "https://github.com/catchorg/Catch2",
+    "automatic_registered": true
   },
   "chriskohlhoff/asio": {
     "description": "Asio C++ Library - asynchronous network and low-level I/O programming",
@@ -59,7 +112,8 @@
     "cppstd": 11,
     "owner": "chriskohlhoff",
     "repo": "asio",
-    "url": "https://github.com/chriskohlhoff/asio"
+    "url": "https://github.com/chriskohlhoff/asio",
+    "automatic_registered": true
   },
   "CLIUtils/CLI11": {
     "description": "CLI11 is a command line parser for C++11 and beyond",
@@ -68,7 +122,18 @@
     "cppstd": 11,
     "owner": "CLIUtils",
     "repo": "CLI11",
-    "url": "https://github.com/CLIUtils/CLI11"
+    "url": "https://github.com/CLIUtils/CLI11",
+    "automatic_registered": true
+  },
+  "cocos2d/cocos2d-x": {
+    "description": "Cocos2d-x is a suite of open-source, cross-platform, game-development tools",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "cocos2d",
+    "repo": "cocos2d-x",
+    "url": "https://github.com/cocos2d/cocos2d-x",
+    "automatic_registered": true
   },
   "cpp-registry/tinyfiledialogs": {
     "description": "(mirror) inputbox password WIN OSX GTK QT Console VCPKG C# Lua R Fortran Pascal",
@@ -85,7 +150,8 @@
     "cppstd": 11,
     "owner": "doctest",
     "repo": "doctest",
-    "url": "https://github.com/doctest/doctest"
+    "url": "https://github.com/doctest/doctest",
+    "automatic_registered": true
   },
   "drogonframework/drogon": {
     "description": "Drogon: A C++14/17/20 based HTTP web application framework",
@@ -94,7 +160,8 @@
     "cppstd": 17,
     "owner": "drogonframework",
     "repo": "drogon",
-    "url": "https://github.com/drogonframework/drogon"
+    "url": "https://github.com/drogonframework/drogon",
+    "automatic_registered": true
   },
   "epezent/implot": {
     "description": "Advanced 2D Plotting for Dear ImGui",
@@ -103,7 +170,18 @@
     "cppstd": 11,
     "owner": "epezent",
     "repo": "implot",
-    "url": "https://github.com/epezent/implot"
+    "url": "https://github.com/epezent/implot",
+    "automatic_registered": true
+  },
+  "EpicGames/UnrealEngine": {
+    "description": "Unreal Engine source code (access requires linking your GitHub account with an Epic Games account)",
+    "language": "C++",
+    "license": "Unreal Engine EULA",
+    "cppstd": 17,
+    "owner": "EpicGames",
+    "repo": "UnrealEngine",
+    "url": "https://github.com/EpicGames/UnrealEngine",
+    "automatic_registered": true
   },
   "ericniebler/range-v3": {
     "description": "Range library for C++14/17/20, basis for the C++20 std::ranges",
@@ -112,7 +190,8 @@
     "cppstd": 14,
     "owner": "ericniebler",
     "repo": "range-v3",
-    "url": "https://github.com/ericniebler/range-v3"
+    "url": "https://github.com/ericniebler/range-v3",
+    "automatic_registered": true
   },
   "erincatto/box2d": {
     "description": "Box2D is a 2D physics engine for games",
@@ -120,7 +199,17 @@
     "license": "MIT",
     "owner": "erincatto",
     "repo": "box2d",
-    "url": "https://github.com/erincatto/box2d"
+    "url": "https://github.com/erincatto/box2d",
+    "automatic_registered": true
+  },
+  "flaxengine/FlaxEngine": {
+    "description": "Flax Engine - multi-platform 3D game engine",
+    "language": "C++",
+    "license": "Flax Engine EULA",
+    "owner": "flaxengine",
+    "repo": "FlaxEngine",
+    "url": "https://github.com/flaxengine/FlaxEngine",
+    "automatic_registered": true
   },
   "fltk/fltk": {
     "cppstd": 11,
@@ -129,7 +218,17 @@
     "language": "C++",
     "owner": "fltk",
     "repo": "fltk",
-    "url": "https://github.com/fltk/fltk"
+    "url": "https://github.com/fltk/fltk",
+    "automatic_registered": true
+  },
+  "FluidSynth/fluidsynth": {
+    "description": "Software synthesizer based on the SoundFont 2 specifications",
+    "language": "C",
+    "license": "LGPL-2.1",
+    "owner": "FluidSynth",
+    "repo": "fluidsynth",
+    "url": "https://github.com/FluidSynth/fluidsynth",
+    "automatic_registered": true
   },
   "fmtlib/fmt": {
     "description": "A modern formatting library",
@@ -138,7 +237,8 @@
     "cppstd": 11,
     "owner": "fmtlib",
     "repo": "fmt",
-    "url": "https://github.com/fmtlib/fmt"
+    "url": "https://github.com/fmtlib/fmt",
+    "automatic_registered": true
   },
   "g-truc/glm": {
     "description": "OpenGL Mathematics (GLM) - header-only C++ mathematics library for graphics software",
@@ -146,7 +246,8 @@
     "license": "MIT",
     "owner": "g-truc",
     "repo": "glm",
-    "url": "https://github.com/g-truc/glm"
+    "url": "https://github.com/g-truc/glm",
+    "automatic_registered": true
   },
   "gabime/spdlog": {
     "description": "Fast C++ logging library",
@@ -155,7 +256,8 @@
     "cppstd": 11,
     "owner": "gabime",
     "repo": "spdlog",
-    "url": "https://github.com/gabime/spdlog"
+    "url": "https://github.com/gabime/spdlog",
+    "automatic_registered": true
   },
   "glfw/glfw": {
     "license": "zlib",
@@ -163,7 +265,37 @@
     "description": "A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input",
     "owner": "glfw",
     "repo": "glfw",
-    "url": "https://github.com/glfw/glfw"
+    "url": "https://github.com/glfw/glfw",
+    "automatic_registered": true
+  },
+  "gnutls/gnutls": {
+    "description": "GnuTLS implements the TLS/SSL and DTLS protocols and technologies around them",
+    "language": "C",
+    "license": "LGPL-2.1",
+    "owner": "gnutls",
+    "repo": "gnutls",
+    "url": "https://github.com/gnutls/gnutls",
+    "automatic_registered": true
+  },
+  "godotengine/godot": {
+    "description": "Godot Engine - Multi-platform 2D and 3D game engine",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 17,
+    "owner": "godotengine",
+    "repo": "godot",
+    "url": "https://github.com/godotengine/godot",
+    "automatic_registered": true
+  },
+  "GodotJolt/godot-jolt": {
+    "description": "Godot extension that lets you use Jolt Physics in Godot 4",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 17,
+    "owner": "GodotJolt",
+    "repo": "godot-jolt",
+    "url": "https://github.com/GodotJolt/godot-jolt",
+    "automatic_registered": true
   },
   "google/benchmark": {
     "description": "A microbenchmark support library",
@@ -171,7 +303,8 @@
     "license": "Apache-2.0",
     "owner": "google",
     "repo": "benchmark",
-    "url": "https://github.com/google/benchmark"
+    "url": "https://github.com/google/benchmark",
+    "automatic_registered": true
   },
   "google/googletest": {
     "description": "GoogleTest - Google Testing and Mocking Framework",
@@ -180,7 +313,8 @@
     "cppstd": 17,
     "owner": "google",
     "repo": "googletest",
-    "url": "https://github.com/google/googletest"
+    "url": "https://github.com/google/googletest",
+    "automatic_registered": true
   },
   "greg7mdp/parallel-hashmap": {
     "description": "A family of header-only, very fast and memory-friendly hashmap and btree containers",
@@ -189,7 +323,8 @@
     "cppstd": 11,
     "owner": "greg7mdp",
     "repo": "parallel-hashmap",
-    "url": "https://github.com/greg7mdp/parallel-hashmap"
+    "url": "https://github.com/greg7mdp/parallel-hashmap",
+    "automatic_registered": true
   },
   "gulrak/filesystem": {
     "description": "An implementation of C++17 std::filesystem for C++11/14/17/20",
@@ -198,14 +333,16 @@
     "cppstd": 11,
     "owner": "gulrak",
     "repo": "filesystem",
-    "url": "https://github.com/gulrak/filesystem"
+    "url": "https://github.com/gulrak/filesystem",
+    "automatic_registered": true
   },
   "immediate-mode-ui/nuklear": {
     "description": "A single-header ANSI C immediate mode cross-platform GUI library",
     "language": "C",
     "owner": "immediate-mode-ui",
     "repo": "nuklear",
-    "url": "https://github.com/immediate-mode-ui/nuklear"
+    "url": "https://github.com/immediate-mode-ui/nuklear",
+    "automatic_registered": true
   },
   "jarro2783/cxxopts": {
     "description": "Lightweight C++ command line option parser",
@@ -214,7 +351,8 @@
     "cppstd": 11,
     "owner": "jarro2783",
     "repo": "cxxopts",
-    "url": "https://github.com/jarro2783/cxxopts"
+    "url": "https://github.com/jarro2783/cxxopts",
+    "automatic_registered": true
   },
   "jbeder/yaml-cpp": {
     "description": "A YAML parser and emitter in C++",
@@ -223,7 +361,56 @@
     "cppstd": 11,
     "owner": "jbeder",
     "repo": "yaml-cpp",
-    "url": "https://github.com/jbeder/yaml-cpp"
+    "url": "https://github.com/jbeder/yaml-cpp",
+    "automatic_registered": true
+  },
+  "jedisct1/libsodium": {
+    "description": "A modern, portable, easy to use crypto library",
+    "language": "C",
+    "license": "ISC",
+    "owner": "jedisct1",
+    "repo": "libsodium",
+    "url": "https://github.com/jedisct1/libsodium",
+    "automatic_registered": true
+  },
+  "jrouwe/JoltPhysics": {
+    "description": "A multi core friendly rigid body physics and collision detection library, suitable for games and VR applications",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 17,
+    "owner": "jrouwe",
+    "repo": "JoltPhysics",
+    "url": "https://github.com/jrouwe/JoltPhysics",
+    "automatic_registered": true
+  },
+  "juce-framework/JUCE": {
+    "description": "JUCE is an open-source cross-platform C++ application framework for desktop and mobile applications, including VST/AU/AAX audio plug-ins",
+    "language": "C++",
+    "license": "AGPL-3.0 / Commercial",
+    "cppstd": 17,
+    "owner": "juce-framework",
+    "repo": "JUCE",
+    "url": "https://github.com/juce-framework/JUCE",
+    "automatic_registered": true
+  },
+  "kcat/openal-soft": {
+    "description": "OpenAL Soft is a software implementation of the OpenAL 3D audio API",
+    "language": "C++",
+    "license": "LGPL-2.0",
+    "cppstd": 14,
+    "owner": "kcat",
+    "repo": "openal-soft",
+    "url": "https://github.com/kcat/openal-soft",
+    "automatic_registered": true
+  },
+  "kokke/tiny-AES-c": {
+    "description": "Small portable AES128/192/256 in C",
+    "language": "C",
+    "license": "Unlicense",
+    "owner": "kokke",
+    "repo": "tiny-AES-c",
+    "url": "https://github.com/kokke/tiny-AES-c",
+    "automatic_registered": true
   },
   "leethomason/tinyxml2": {
     "description": "TinyXML2 is a simple, small, efficient, C++ XML parser",
@@ -232,7 +419,8 @@
     "cppstd": 11,
     "owner": "leethomason",
     "repo": "tinyxml2",
-    "url": "https://github.com/leethomason/tinyxml2"
+    "url": "https://github.com/leethomason/tinyxml2",
+    "automatic_registered": true
   },
   "libcpr/cpr": {
     "description": "C++ Requests: Curl for People, a spiritual port of Python Requests",
@@ -241,7 +429,26 @@
     "cppstd": 17,
     "owner": "libcpr",
     "repo": "cpr",
-    "url": "https://github.com/libcpr/cpr"
+    "url": "https://github.com/libcpr/cpr",
+    "automatic_registered": true
+  },
+  "libgdx/libgdx": {
+    "description": "Desktop/Android/HTML5/iOS Java game development framework (nur zur Vollstaendigkeit, nicht C++)",
+    "language": "Java",
+    "license": "Apache-2.0",
+    "owner": "libgdx",
+    "repo": "libgdx",
+    "url": "https://github.com/libgdx/libgdx",
+    "automatic_registered": true
+  },
+  "libretro/RetroArch": {
+    "description": "Cross-platform, sophisticated frontend for the libretro API. Licensed GPLv3",
+    "language": "C",
+    "license": "GPL-3.0",
+    "owner": "libretro",
+    "repo": "RetroArch",
+    "url": "https://github.com/libretro/RetroArch",
+    "automatic_registered": true
   },
   "libsdl-org/SDL": {
     "description": "Simple DirectMedia Layer - cross-platform library for windowing, input, audio and graphics",
@@ -249,7 +456,26 @@
     "license": "zlib",
     "owner": "libsdl-org",
     "repo": "SDL",
-    "url": "https://github.com/libsdl-org/SDL"
+    "url": "https://github.com/libsdl-org/SDL",
+    "automatic_registered": true
+  },
+  "libsndfile/libsndfile": {
+    "description": "A C library for reading and writing sound files containing sampled audio data",
+    "language": "C",
+    "license": "LGPL-2.1",
+    "owner": "libsndfile",
+    "repo": "libsndfile",
+    "url": "https://github.com/libsndfile/libsndfile",
+    "automatic_registered": true
+  },
+  "mackron/miniaudio": {
+    "description": "Audio playback and capture library written in C, in a single source file",
+    "language": "C",
+    "license": "MIT / Public Domain",
+    "owner": "mackron",
+    "repo": "miniaudio",
+    "url": "https://github.com/mackron/miniaudio",
+    "automatic_registered": true
   },
   "martinus/robin-hood-hashing": {
     "description": "Fast & memory efficient hashtable based on robin hood hashing for C++11/14/17/20",
@@ -258,7 +484,8 @@
     "cppstd": 11,
     "owner": "martinus",
     "repo": "robin-hood-hashing",
-    "url": "https://github.com/martinus/robin-hood-hashing"
+    "url": "https://github.com/martinus/robin-hood-hashing",
+    "automatic_registered": true
   },
   "marzer/tomlplusplus": {
     "description": "Header-only TOML config file parser and serializer for C++17",
@@ -267,7 +494,17 @@
     "cppstd": 17,
     "owner": "marzer",
     "repo": "tomlplusplus",
-    "url": "https://github.com/marzer/tomlplusplus"
+    "url": "https://github.com/marzer/tomlplusplus",
+    "automatic_registered": true
+  },
+  "Mbed-TLS/mbedtls": {
+    "description": "An open source, portable, easy to use, readable and flexible TLS library, and reference implementation of the PSA Cryptography API",
+    "language": "C",
+    "license": "Apache-2.0 / GPL-2.0",
+    "owner": "Mbed-TLS",
+    "repo": "mbedtls",
+    "url": "https://github.com/Mbed-TLS/mbedtls",
+    "automatic_registered": true
   },
   "meemknight/gl2d": {
     "description": "a simple 2d library made in opengl",
@@ -276,7 +513,8 @@
     "license": "MIT",
     "owner": "meemknight",
     "repo": "gl2d",
-    "url": "https://github.com/meemknight/gl2d"
+    "url": "https://github.com/meemknight/gl2d",
+    "automatic_registered": true
   },
   "meemknight/gl3d": {
     "description": "A deferred physically based 3D renderer into a simple to use header-only library.",
@@ -284,7 +522,8 @@
     "cppstd": 17,
     "owner": "meemknight",
     "repo": "gl3d",
-    "url": "https://github.com/meemknight/gl3d"
+    "url": "https://github.com/meemknight/gl3d",
+    "automatic_registered": true
   },
   "meemknight/glui": {
     "description": "UI library inspired by imgui, it makes adding menus and submenus very easy!",
@@ -292,7 +531,8 @@
     "cppstd": 17,
     "owner": "meemknight",
     "repo": "glui",
-    "url": "https://github.com/meemknight/glui"
+    "url": "https://github.com/meemknight/glui",
+    "automatic_registered": true
   },
   "meemknight/profilerlib": {
     "description": "",
@@ -300,7 +540,8 @@
     "cppstd": 17,
     "owner": "meemknight",
     "repo": "profilerlib",
-    "url": "https://github.com/meemknight/profilerlib"
+    "url": "https://github.com/meemknight/profilerlib",
+    "automatic_registered": true
   },
   "meemknight/safesave": {
     "description": "this library allows you to save data and if your program is forcefully stopped it will load a backup so you don't loose all the progress",
@@ -309,7 +550,8 @@
     "cppstd": 17,
     "owner": "meemknight",
     "repo": "safesave",
-    "url": "https://github.com/meemknight/safesave"
+    "url": "https://github.com/meemknight/safesave",
+    "automatic_registered": true
   },
   "microsoft/GSL": {
     "description": "Guidelines Support Library",
@@ -318,7 +560,8 @@
     "cppstd": 14,
     "owner": "microsoft",
     "repo": "GSL",
-    "url": "https://github.com/microsoft/GSL"
+    "url": "https://github.com/microsoft/GSL",
+    "automatic_registered": true
   },
   "Neargye/magic_enum": {
     "description": "Static reflection for enums (to string, from string, iteration) for modern C++",
@@ -327,7 +570,8 @@
     "cppstd": 17,
     "owner": "Neargye",
     "repo": "magic_enum",
-    "url": "https://github.com/Neargye/magic_enum"
+    "url": "https://github.com/Neargye/magic_enum",
+    "automatic_registered": true
   },
   "nemtrif/utfcpp": {
     "description": "UTF8-CPP: UTF-8 with C++ in a Portable Way",
@@ -336,7 +580,8 @@
     "cppstd": 11,
     "owner": "nemtrif",
     "repo": "utfcpp",
-    "url": "https://github.com/nemtrif/utfcpp"
+    "url": "https://github.com/nemtrif/utfcpp",
+    "automatic_registered": true
   },
   "nlohmann/json": {
     "language": "C++",
@@ -345,7 +590,8 @@
     "license": "MIT",
     "owner": "nlohmann",
     "repo": "json",
-    "url": "https://github.com/nlohmann/json"
+    "url": "https://github.com/nlohmann/json",
+    "automatic_registered": true
   },
   "nothings/stb": {
     "description": "stb single-file public domain libraries for C/C++ (image loading, fonts, etc.)",
@@ -353,7 +599,18 @@
     "license": "MIT / Public Domain",
     "owner": "nothings",
     "repo": "stb",
-    "url": "https://github.com/nothings/stb"
+    "url": "https://github.com/nothings/stb",
+    "automatic_registered": true
+  },
+  "o3de/o3de": {
+    "description": "Open 3D Engine (O3DE) is an Apache 2.0-licensed multi-platform 3D engine for AAA-quality games and simulations",
+    "language": "C++",
+    "license": "Apache-2.0",
+    "cppstd": 17,
+    "owner": "o3de",
+    "repo": "o3de",
+    "url": "https://github.com/o3de/o3de",
+    "automatic_registered": true
   },
   "ocornut/imgui": {
     "description": "Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies",
@@ -362,7 +619,28 @@
     "cppstd": 11,
     "owner": "ocornut",
     "repo": "imgui",
-    "url": "https://github.com/ocornut/imgui"
+    "url": "https://github.com/ocornut/imgui",
+    "automatic_registered": true
+  },
+  "OGRECave/ogre": {
+    "description": "scene-oriented, flexible 3D engine written in C++",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "OGRECave",
+    "repo": "ogre",
+    "url": "https://github.com/OGRECave/ogre",
+    "automatic_registered": true
+  },
+  "OGRECave/ogre-next": {
+    "description": "Ogre 2.x branch - a scene-oriented, flexible 3D engine written in C++ with a focus on performance",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "OGRECave",
+    "repo": "ogre-next",
+    "url": "https://github.com/OGRECave/ogre-next",
+    "automatic_registered": true
   },
   "oneapi-src/oneTBB": {
     "description": "oneAPI Threading Building Blocks (oneTBB)",
@@ -371,7 +649,8 @@
     "cppstd": 11,
     "owner": "oneapi-src",
     "repo": "oneTBB",
-    "url": "https://github.com/oneapi-src/oneTBB"
+    "url": "https://github.com/oneapi-src/oneTBB",
+    "automatic_registered": true
   },
   "open-source-parsers/jsoncpp": {
     "description": "A C++ library for interacting with JSON",
@@ -380,7 +659,8 @@
     "cppstd": 11,
     "owner": "open-source-parsers",
     "repo": "jsoncpp",
-    "url": "https://github.com/open-source-parsers/jsoncpp"
+    "url": "https://github.com/open-source-parsers/jsoncpp",
+    "automatic_registered": true
   },
   "opencv/opencv": {
     "description": "Open Source Computer Vision Library",
@@ -389,7 +669,17 @@
     "cppstd": 11,
     "owner": "opencv",
     "repo": "opencv",
-    "url": "https://github.com/opencv/opencv"
+    "url": "https://github.com/opencv/opencv",
+    "automatic_registered": true
+  },
+  "openssl/openssl": {
+    "description": "TLS/SSL and crypto library",
+    "language": "C",
+    "license": "Apache-2.0",
+    "owner": "openssl",
+    "repo": "openssl",
+    "url": "https://github.com/openssl/openssl",
+    "automatic_registered": true
   },
   "p-ranav/argparse": {
     "description": "Argument Parser for Modern C++",
@@ -398,7 +688,17 @@
     "cppstd": 17,
     "owner": "p-ranav",
     "repo": "argparse",
-    "url": "https://github.com/p-ranav/argparse"
+    "url": "https://github.com/p-ranav/argparse",
+    "automatic_registered": true
+  },
+  "PortAudio/portaudio": {
+    "description": "PortAudio is a cross-platform, open-source C language library for real-time audio input and output",
+    "language": "C",
+    "license": "MIT",
+    "owner": "PortAudio",
+    "repo": "portaudio",
+    "url": "https://github.com/PortAudio/portaudio",
+    "automatic_registered": true
   },
   "pybind/pybind11": {
     "description": "Seamless operability between C++11 and Python",
@@ -407,7 +707,27 @@
     "cppstd": 11,
     "owner": "pybind",
     "repo": "pybind11",
-    "url": "https://github.com/pybind/pybind11"
+    "url": "https://github.com/pybind/pybind11",
+    "automatic_registered": true
+  },
+  "randombit/botan": {
+    "description": "Cryptography Toolkit - C++ crypto library with TLS, X.509 and many algorithms",
+    "language": "C++",
+    "license": "BSD-2-Clause",
+    "cppstd": 20,
+    "owner": "randombit",
+    "repo": "botan",
+    "url": "https://github.com/randombit/botan",
+    "automatic_registered": true
+  },
+  "raysan5-extras/raygui": {
+    "description": "A simple and easy-to-use immediate-mode gui library",
+    "language": "C",
+    "license": "zlib",
+    "owner": "raysan5-extras",
+    "repo": "raygui",
+    "url": "https://github.com/raysan5-extras/raygui",
+    "automatic_registered": true
   },
   "raysan5/raylib": {
     "description": "A simple and easy-to-use library to enjoy videogames programming",
@@ -415,7 +735,8 @@
     "license": "zlib",
     "owner": "raysan5",
     "repo": "raylib",
-    "url": "https://github.com/raysan5/raylib"
+    "url": "https://github.com/raysan5/raylib",
+    "automatic_registered": true
   },
   "SFML/SFML": {
     "description": "Simple and Fast Multimedia Library",
@@ -424,7 +745,8 @@
     "cppstd": 17,
     "owner": "SFML",
     "repo": "SFML",
-    "url": "https://github.com/SFML/SFML"
+    "url": "https://github.com/SFML/SFML",
+    "automatic_registered": true
   },
   "shadowdara/argparser": {
     "description": "little argparser libary in C, port of the argparser libary from finder in go",
@@ -478,7 +800,8 @@
     "cppstd": 17,
     "owner": "skypjack",
     "repo": "entt",
-    "url": "https://github.com/skypjack/entt"
+    "url": "https://github.com/skypjack/entt",
+    "automatic_registered": true
   },
   "SRombauts/SQLiteCpp": {
     "description": "SQLiteC++ (SQLiteCpp) is a smart and easy to use C++ SQLite3 wrapper",
@@ -487,7 +810,8 @@
     "cppstd": 11,
     "owner": "SRombauts",
     "repo": "SQLiteCpp",
-    "url": "https://github.com/SRombauts/SQLiteCpp"
+    "url": "https://github.com/SRombauts/SQLiteCpp",
+    "automatic_registered": true
   },
   "Tencent/rapidjson": {
     "description": "A fast JSON parser/generator for C++ with both SAX/DOM style API",
@@ -496,7 +820,8 @@
     "cppstd": 11,
     "owner": "Tencent",
     "repo": "rapidjson",
-    "url": "https://github.com/Tencent/rapidjson"
+    "url": "https://github.com/Tencent/rapidjson",
+    "automatic_registered": true
   },
   "ThePhD/sol2": {
     "description": "Sol3 (sol2 v3.0) - a C++ <-> Lua API wrapper with advanced features and top notch performance",
@@ -505,7 +830,28 @@
     "cppstd": 17,
     "owner": "ThePhD",
     "repo": "sol2",
-    "url": "https://github.com/ThePhD/sol2"
+    "url": "https://github.com/ThePhD/sol2",
+    "automatic_registered": true
+  },
+  "thestk/rtaudio": {
+    "description": "A set of C++ classes that provide a common API for realtime audio input/output across Linux, Macintosh OS X, and Windows",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "thestk",
+    "repo": "rtaudio",
+    "url": "https://github.com/thestk/rtaudio",
+    "automatic_registered": true
+  },
+  "thestk/stk": {
+    "description": "The Synthesis ToolKit in C++ (STK) - audio signal processing and algorithmic synthesis classes",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "thestk",
+    "repo": "stk",
+    "url": "https://github.com/thestk/stk",
+    "automatic_registered": true
   },
   "ToruNiina/toml11": {
     "description": "TOML for Modern C++",
@@ -514,7 +860,38 @@
     "cppstd": 11,
     "owner": "ToruNiina",
     "repo": "toml11",
-    "url": "https://github.com/ToruNiina/toml11"
+    "url": "https://github.com/ToruNiina/toml11",
+    "automatic_registered": true
+  },
+  "urho3d/urho3d": {
+    "description": "Urho3D is a free lightweight, cross-platform 2D and 3D game engine implemented in C++",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "urho3d",
+    "repo": "urho3d",
+    "url": "https://github.com/urho3d/urho3d",
+    "automatic_registered": true
+  },
+  "ValveSoftware/GameNetworkingSockets": {
+    "description": "Reliable & unreliable messages over UDP. Robust message fragmentation & reassembly. P2P networking / NAT traversal",
+    "language": "C++",
+    "license": "BSD-3-Clause",
+    "cppstd": 11,
+    "owner": "ValveSoftware",
+    "repo": "GameNetworkingSockets",
+    "url": "https://github.com/ValveSoftware/GameNetworkingSockets",
+    "automatic_registered": true
+  },
+  "weidai11/cryptopp": {
+    "description": "free C++ class library of cryptographic schemes",
+    "language": "C++",
+    "license": "BSL-1.0",
+    "cppstd": 11,
+    "owner": "weidai11",
+    "repo": "cryptopp",
+    "url": "https://github.com/weidai11/cryptopp",
+    "automatic_registered": true
   },
   "weuritz8u/base32": {
     "license": "MIT",
@@ -524,12 +901,68 @@
     "repo": "base32",
     "url": "https://github.com/weuritz8u/base32"
   },
+  "wicked-engine/WickedEngine": {
+    "description": "3D engine with modern graphics (DX12, Vulkan)",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 20,
+    "owner": "wicked-engine",
+    "repo": "WickedEngine",
+    "url": "https://github.com/wicked-engine/WickedEngine",
+    "automatic_registered": true
+  },
+  "wolfSSL/wolfssl": {
+    "description": "The wolfSSL library is a small, fast, portable implementation of TLS/SSL for embedded devices to the cloud",
+    "language": "C",
+    "license": "GPL-2.0 / Commercial",
+    "owner": "wolfSSL",
+    "repo": "wolfssl",
+    "url": "https://github.com/wolfSSL/wolfssl",
+    "automatic_registered": true
+  },
   "wxwidgets/wxwidgets": {
     "description": "Cross-Platform C++ GUI Library",
     "language": "C++",
     "owner": "wxwidgets",
     "repo": "wxwidgets",
-    "url": "https://github.com/wxwidgets/wxwidgets"
+    "url": "https://github.com/wxwidgets/wxwidgets",
+    "automatic_registered": true
+  },
+  "xiph/flac": {
+    "description": "Free Lossless Audio Codec",
+    "language": "C",
+    "license": "BSD-3-Clause",
+    "owner": "xiph",
+    "repo": "flac",
+    "url": "https://github.com/xiph/flac",
+    "automatic_registered": true
+  },
+  "xiph/ogg": {
+    "description": "Ogg Bitstream Library",
+    "language": "C",
+    "license": "BSD-3-Clause",
+    "owner": "xiph",
+    "repo": "ogg",
+    "url": "https://github.com/xiph/ogg",
+    "automatic_registered": true
+  },
+  "xiph/opus": {
+    "description": "Modern audio compression for the internet",
+    "language": "C",
+    "license": "BSD-3-Clause",
+    "owner": "xiph",
+    "repo": "opus",
+    "url": "https://github.com/xiph/opus",
+    "automatic_registered": true
+  },
+  "xiph/vorbis": {
+    "description": "Reference implementation of the Ogg Vorbis audio format",
+    "language": "C",
+    "license": "BSD-3-Clause",
+    "owner": "xiph",
+    "repo": "vorbis",
+    "url": "https://github.com/xiph/vorbis",
+    "automatic_registered": true
   },
   "yhirose/cpp-httplib": {
     "description": "A C++ header-only HTTP/HTTPS server and client library",
@@ -538,7 +971,8 @@
     "cppstd": 11,
     "owner": "yhirose",
     "repo": "cpp-httplib",
-    "url": "https://github.com/yhirose/cpp-httplib"
+    "url": "https://github.com/yhirose/cpp-httplib",
+    "automatic_registered": true
   },
   "zeromq/cppzmq": {
     "description": "Header-only C++ binding for libzmq",
@@ -547,7 +981,8 @@
     "cppstd": 11,
     "owner": "zeromq",
     "repo": "cppzmq",
-    "url": "https://github.com/zeromq/cppzmq"
+    "url": "https://github.com/zeromq/cppzmq",
+    "automatic_registered": true
   },
   "zeux/pugixml": {
     "description": "Light-weight, simple and fast XML parser for C++ with XPath support",
@@ -555,6 +990,7 @@
     "license": "MIT",
     "owner": "zeux",
     "repo": "pugixml",
-    "url": "https://github.com/zeux/pugixml"
+    "url": "https://github.com/zeux/pugixml",
+    "automatic_registered": true
   }
 }
