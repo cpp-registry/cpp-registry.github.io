@@ -1,0 +1,102 @@
+---
+import registry from "../../../registry.json";
+import Head from "../../components/Head.astro";
+import "../../styles/global.css";
+
+export function getStaticPaths() {
+  const users = [
+    ...new Set(Object.values(registry).map((project) => project.owner)),
+  ];
+
+  return users.map((username) => ({
+    params: {
+      username,
+    },
+    props: {
+      username,
+      projects: Object.values(registry).filter(
+        (project) => project.owner === username,
+      ),
+    },
+  }));
+}
+
+const { username, projects } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+
+    <title>{username} — C++ Registry</title>
+
+    <meta
+      name="description"
+      content={`${username}'s C++ projects on the C++ Registry.`}
+    />
+
+    <Head />
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <a href="/">C++ Registry</a>
+        /
+        {username}
+      </nav>
+
+      <header class="profile-header">
+        <p class="eyebrow">USER</p>
+
+        <h1>{username}</h1>
+
+        <p class="subtitle">
+          {projects.length}
+          {projects.length === 1 ? " project" : " projects"} in the C++ Registry.
+        </p>
+
+        <a
+          href={`https://github.com/${username}`}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          View on GitHub →
+        </a>
+      </header>
+
+      <section>
+        <div class="results-header">
+          <span>
+            {projects.length}
+            {projects.length === 1 ? " project" : " projects"}
+          </span>
+        </div>
+
+        <div class="results">
+          {
+            projects.map((project) => (
+              <a class="project" href={`/~/${project.owner}/${project.repo}`}>
+                <div class="project-main">
+                  <h2>{project.repo}</h2>
+
+                  {project.description && <p>{project.description}</p>}
+                </div>
+
+                <div class="project-meta">
+                  {project.license && (
+                    <span class="license">{project.license}</span>
+                  )}
+
+                  {project.cppstd && <span>C++{project.cppstd}</span>}
+                </div>
+              </a>
+            ))
+          }
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

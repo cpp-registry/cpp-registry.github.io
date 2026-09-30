@@ -1,0 +1,10 @@
+# to register user automaticly so they dont have to do it manually
+#
+# only for admins
+
+fltk:
+  repos:
+    fltk:
+      cppstd: 11
+      license: FLTK License
+      description: "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development"

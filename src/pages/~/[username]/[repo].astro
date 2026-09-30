@@ -1,5 +1,6 @@
 ---
 import registry from "../../../../registry.json";
+import Head from "../../../components/Head.astro";
 
 import "../../../styles/global.css";
 
@@ -26,6 +27,7 @@ const { project } = Astro.props;
       name="description"
       content={project.description ?? `${project.repo} by ${project.owner}`}
     />
+    <Head />
   </head>
 
   <body>
@@ -40,9 +42,7 @@ const { project } = Astro.props;
 
       <h1>{project.repo}</h1>
 
-      {project.description && (
-        <p>{project.description}</p>
-      )}
+      {project.description && <p>{project.description}</p>}
 
       <p>
         by <a href={`https://github.com/${project.owner}`}>
@@ -50,21 +50,23 @@ const { project } = Astro.props;
         </a>
       </p>
 
-      {project.license && (
-        <p>
-          License: <strong>{project.license}</strong>
-        </p>
-      )}
+      {
+        project.license && (
+          <p>
+            License: <strong>{project.license}</strong>
+          </p>
+        )
+      }
 
-      {project.cppstd && (
-        <p>Standard: <strong>C++{project.cppstd}</strong></p>
-      )}
+      {
+        project.cppstd && (
+          <p>
+            Standard: <strong>C++{project.cppstd}</strong>
+          </p>
+        )
+      }
 
-      <a
-        href={project.url}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
+      <a href={project.url} target="_blank" rel="noopener noreferrer">
         View on GitHub →
       </a>
     </main>

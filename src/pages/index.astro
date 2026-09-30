@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import registry from "../../registry.json";
+import Head from "../components/Head.astro";
 
 const projects = Object.entries(registry).map(([id, project]) => ({
   id,
@@ -18,9 +19,8 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       name="description"
       content="A registry of C++ libraries and projects."
     />
-  </head>
-
-  <body>
+    <Head />
+  </head><body>
     <main class="home">
       <header class="hero">
         <p class="eyebrow">C++ REGISTRY</p>
@@ -40,8 +40,8 @@ const projects = Object.entries(registry).map(([id, project]) => ({
             stroke-width="2"
             aria-hidden="true"
           >
-            <circle cx="11" cy="11" r="7" />
-            <path d="m20 20-4-4" />
+            <circle cx="11" cy="11" r="7"></circle>
+            <path d="m20 20-4-4"></path>
           </svg>
 
           <input
@@ -64,36 +64,34 @@ const projects = Object.entries(registry).map(([id, project]) => ({
         </div>
 
         <div id="results" class="results">
-          {projects.map((project) => (
-            <a
-              class="project"
-              href={`/~/${project.owner}/${project.repo}`}
-              data-search={`
+          {
+            projects.map((project) => (
+              <a
+                class="project"
+                href={`/~/${project.owner}/${project.repo}`}
+                data-search={`
                 ${project.repo}
                 ${project.owner}
                 ${project.description ?? ""}
                 ${project.license ?? ""}
               `.toLowerCase()}
-            >
-              <div class="project-main">
-                <h2>{project.repo}</h2>
+              >
+                <div class="project-main">
+                  <h2>{project.repo}</h2>
 
-                {project.description && (
-                  <p>{project.description}</p>
-                )}
-              </div>
+                  {project.description && <p>{project.description}</p>}
+                </div>
 
-              <div class="project-meta">
-                <span>{project.owner}</span>
+                <div class="project-meta">
+                  <span>{project.owner}</span>
 
-                {project.license && (
-                  <span class="license">
-                    {project.license}
-                  </span>
-                )}
-              </div>
-            </a>
-          ))}
+                  {project.license && (
+                    <span class="license">{project.license}</span>
+                  )}
+                </div>
+              </a>
+            ))
+          }
         </div>
 
         <div id="no-results" class="no-results" hidden>
@@ -108,14 +106,10 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       const results = document.querySelector("#results");
       const noResults = document.querySelector("#no-results");
       const resultCount = document.querySelector("#result-count");
-      const projects = Array.from(
-        document.querySelectorAll(".project")
-      );
+      const projects = Array.from(document.querySelectorAll(".project"));
 
       function search(query) {
-        const normalized = query
-          .trim()
-          .toLowerCase();
+        const normalized = query.trim().toLowerCase();
 
         let visible = 0;
 
@@ -132,8 +126,7 @@ const projects = Object.entries(registry).map(([id, project]) => ({
 
         noResults.hidden = visible !== 0;
 
-        resultCount.textContent =
-          `${visible} ${visible === 1 ? "project" : "projects"}`;
+        resultCount.textContent = `${visible} ${visible === 1 ? "project" : "projects"}`;
       }
 
       input.addEventListener("input", () => {
@@ -141,18 +134,12 @@ const projects = Object.entries(registry).map(([id, project]) => ({
       });
 
       document.addEventListener("keydown", (event) => {
-        if (
-          event.key === "/" &&
-          document.activeElement !== input
-        ) {
+        if (event.key === "/" && document.activeElement !== input) {
           event.preventDefault();
           input.focus();
         }
 
-        if (
-          event.key === "Escape" &&
-          document.activeElement === input
-        ) {
+        if (event.key === "Escape" && document.activeElement === input) {
           input.value = "";
           search("");
           input.blur();

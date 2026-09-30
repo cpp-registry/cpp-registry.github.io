@@ -1,4 +1,37 @@
 {
+  "fltk/fltk": {
+    "cppstd": 11,
+    "license": "FLTK License",
+    "description": "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development",
+    "owner": "fltk",
+    "repo": "fltk",
+    "url": "https://github.com/fltk/fltk"
+  },
+  "shadowdara/argparser": {
+    "description": "little argparser libary in C, port of the argparser libary from finder in go",
+    "license": "MIT",
+    "language": "C",
+    "owner": "shadowdara",
+    "repo": "argparser",
+    "url": "https://github.com/shadowdara/argparser"
+  },
+  "shadowdara/colors-cpp": {
+    "description": "all ansi colors as a header file",
+    "license": "MIT",
+    "language": "C++",
+    "owner": "shadowdara",
+    "repo": "colors-cpp",
+    "url": "https://github.com/shadowdara/colors-cpp"
+  },
+  "shadowdara/keyvalueparser": {
+    "description": "a simple KeyValueParser Libary written in C++",
+    "license": "MIT",
+    "language": "C++",
+    "cppstd": 20,
+    "owner": "shadowdara",
+    "repo": "keyvalueparser",
+    "url": "https://github.com/shadowdara/keyvalueparser"
+  },
   "weuritz8u/base32": {
     "license": "MIT",
     "description": "de- and endcoder for base32 in C++ 20",
