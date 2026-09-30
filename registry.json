@@ -16,6 +16,14 @@
     "repo": "fltk",
     "url": "https://github.com/fltk/fltk"
   },
+  "glfw/glfw": {
+    "license": "zlib",
+    "language": "C",
+    "description": "A multi-platform library for OpenGL, OpenGL ES, Vulkan, window and input",
+    "owner": "glfw",
+    "repo": "glfw",
+    "url": "https://github.com/glfw/glfw"
+  },
   "immediate-mode-ui/nuklear": {
     "description": "A single-header ANSI C immediate mode cross-platform GUI library",
     "language": "C",
