@@ -32,6 +32,23 @@
     "repo": "glui",
     "url": "https://github.com/meemknight/glui"
   },
+  "meemknight/gl2d": {
+    "description": "a simple 2d library made in opengl",
+    "language": "C++",
+    "cppstd": 17,
+    "license": "MIT",
+    "owner": "meemknight",
+    "repo": "gl2d",
+    "url": "https://github.com/meemknight/gl2d"
+  },
+  "meemknight/gl3d": {
+    "description": "A deferred physically based 3D renderer into a simple to use header-only library.",
+    "language": "C++",
+    "cppstd": 17,
+    "owner": "meemknight",
+    "repo": "gl3d",
+    "url": "https://github.com/meemknight/gl3d"
+  },
   "shadowdara/argparser": {
     "description": "little argparser libary in C, port of the argparser libary from finder in go",
     "license": "MIT",
