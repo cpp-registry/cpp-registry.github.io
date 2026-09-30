@@ -164,16 +164,6 @@
     "url": "https://github.com/epezent/implot",
     "automatic_registered": true
   },
-  "EpicGames/UnrealEngine": {
-    "description": "Unreal Engine source code (access requires linking your GitHub account with an Epic Games account)",
-    "language": "C++",
-    "license": "Unreal Engine EULA",
-    "cppstd": 17,
-    "owner": "EpicGames",
-    "repo": "UnrealEngine",
-    "url": "https://github.com/EpicGames/UnrealEngine",
-    "automatic_registered": true
-  },
   "ericniebler/range-v3": {
     "description": "Range library for C++14/17/20, basis for the C++20 std::ranges",
     "language": "C++",
@@ -191,15 +181,6 @@
     "owner": "erincatto",
     "repo": "box2d",
     "url": "https://github.com/erincatto/box2d",
-    "automatic_registered": true
-  },
-  "flaxengine/FlaxEngine": {
-    "description": "Flax Engine - multi-platform 3D game engine",
-    "language": "C++",
-    "license": "Flax Engine EULA",
-    "owner": "flaxengine",
-    "repo": "FlaxEngine",
-    "url": "https://github.com/flaxengine/FlaxEngine",
     "automatic_registered": true
   },
   "fltk/fltk": {
@@ -266,26 +247,6 @@
     "owner": "gnutls",
     "repo": "gnutls",
     "url": "https://github.com/gnutls/gnutls",
-    "automatic_registered": true
-  },
-  "godotengine/godot": {
-    "description": "Godot Engine - Multi-platform 2D and 3D game engine",
-    "language": "C++",
-    "license": "MIT",
-    "cppstd": 17,
-    "owner": "godotengine",
-    "repo": "godot",
-    "url": "https://github.com/godotengine/godot",
-    "automatic_registered": true
-  },
-  "GodotJolt/godot-jolt": {
-    "description": "Godot extension that lets you use Jolt Physics in Godot 4",
-    "language": "C++",
-    "license": "MIT",
-    "cppstd": 17,
-    "owner": "GodotJolt",
-    "repo": "godot-jolt",
-    "url": "https://github.com/GodotJolt/godot-jolt",
     "automatic_registered": true
   },
   "google/benchmark": {
@@ -421,15 +382,6 @@
     "owner": "libcpr",
     "repo": "cpr",
     "url": "https://github.com/libcpr/cpr",
-    "automatic_registered": true
-  },
-  "libretro/RetroArch": {
-    "description": "Cross-platform, sophisticated frontend for the libretro API. Licensed GPLv3",
-    "language": "C",
-    "license": "GPL-3.0",
-    "owner": "libretro",
-    "repo": "RetroArch",
-    "url": "https://github.com/libretro/RetroArch",
     "automatic_registered": true
   },
   "libsdl-org/SDL": {
@@ -584,16 +536,6 @@
     "url": "https://github.com/nothings/stb",
     "automatic_registered": true
   },
-  "o3de/o3de": {
-    "description": "Open 3D Engine (O3DE) is an Apache 2.0-licensed multi-platform 3D engine for AAA-quality games and simulations",
-    "language": "C++",
-    "license": "Apache-2.0",
-    "cppstd": 17,
-    "owner": "o3de",
-    "repo": "o3de",
-    "url": "https://github.com/o3de/o3de",
-    "automatic_registered": true
-  },
   "ocornut/imgui": {
     "description": "Dear ImGui: Bloat-free Graphical User interface for C++ with minimal dependencies",
     "language": "C++",
@@ -702,13 +644,13 @@
     "url": "https://github.com/randombit/botan",
     "automatic_registered": true
   },
-  "raysan5-extras/raygui": {
+  "raysan5/raygui": {
     "description": "A simple and easy-to-use immediate-mode gui library",
     "language": "C",
     "license": "zlib",
-    "owner": "raysan5-extras",
+    "owner": "raysan5",
     "repo": "raygui",
-    "url": "https://github.com/raysan5-extras/raygui",
+    "url": "https://github.com/raysan5/raygui",
     "automatic_registered": true
   },
   "raysan5/raylib": {
