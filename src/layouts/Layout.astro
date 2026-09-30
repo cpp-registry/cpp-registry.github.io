@@ -78,6 +78,15 @@ const imageUrl = new URL(image, siteUrl).toString();
     />
 
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <link
+      rel="alternate"
+      type="application/rss+xml"
+      title={"C++ registry"}
+      href={new URL("rss.xml", Astro.site)}
+    />
+    <meta name="author" content="Shadowdara" />
+    <meta name="keywords" content="C++, registry, C, library" />
+    <meta name="generator" content={Astro.generator} />
   </head>
 
   <body>

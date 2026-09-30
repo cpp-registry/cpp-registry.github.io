@@ -1,0 +1,61 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getCollection, render } from "astro:content";
+
+export async function getStaticPaths() {
+  const posts = await getCollection("blog");
+
+  return posts.map((post) => ({
+    params: {
+      slug: post.id,
+    },
+    props: {
+      post,
+    },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+
+<Layout
+  title={`${post.data.title} — C++ Registry`}
+  description={post.data.description}
+>
+  <main class="blog-article">
+    <header class="article-header">
+      <a class="back-link" href="/blog/"> ← BLOG </a>
+
+      <p class="eyebrow">C++ REGISTRY</p>
+
+      <h1>{post.data.title}</h1>
+
+      <p class="article-description">
+        {post.data.description}
+      </p>
+
+      <div class="article-meta">
+        <span>
+          {
+            post.data.date.toLocaleDateString("en-US", {
+              year: "numeric",
+              month: "long",
+              day: "numeric",
+            })
+          }
+        </span>
+
+        <span>{post.data.author}</span>
+      </div>
+    </header>
+
+    <article class="article-content">
+      <Content />
+    </article>
+
+    <footer class="article-footer">
+      <a href="/blog/">← Back to blog</a>
+    </footer>
+  </main>
+</Layout>

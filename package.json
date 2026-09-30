@@ -13,6 +13,8 @@
     "update": "node build-registry.js"
   },
   "dependencies": {
+    "@astrojs/mdx": "^8.0.2",
+    "@astrojs/rss": "^4.0.19",
     "@astrojs/sitemap": "^3.7.4",
     "@playform/compress": "^0.2.5",
     "@shadowdara/dlib": "^0.0.4",
