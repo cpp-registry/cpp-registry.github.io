@@ -38,15 +38,6 @@
     "url": "https://github.com/B-Con/crypto-algorithms",
     "automatic_registered": true
   },
-  "bevyengine/bevy": {
-    "description": "A refreshingly simple data-driven game engine built in Rust (nur zur Vollstaendigkeit, nicht C++)",
-    "language": "Rust",
-    "license": "MIT / Apache-2.0",
-    "owner": "bevyengine",
-    "repo": "bevy",
-    "url": "https://github.com/bevyengine/bevy",
-    "automatic_registered": true
-  },
   "bkaradzic/bgfx": {
     "description": "Cross-platform, graphics API agnostic, Bring Your Own Engine/Framework style rendering library",
     "language": "C++",
@@ -430,15 +421,6 @@
     "owner": "libcpr",
     "repo": "cpr",
     "url": "https://github.com/libcpr/cpr",
-    "automatic_registered": true
-  },
-  "libgdx/libgdx": {
-    "description": "Desktop/Android/HTML5/iOS Java game development framework (nur zur Vollstaendigkeit, nicht C++)",
-    "language": "Java",
-    "license": "Apache-2.0",
-    "owner": "libgdx",
-    "repo": "libgdx",
-    "url": "https://github.com/libgdx/libgdx",
     "automatic_registered": true
   },
   "libretro/RetroArch": {
