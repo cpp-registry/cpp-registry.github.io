@@ -1,11 +1,163 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import "../styles/global.css";
+import registry from "../../registry.json";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const projects = Object.entries(registry).map(([id, project]) => ({
+  id,
+  ...project,
+}));
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>C++ Registry</title>
+    <meta
+      name="description"
+      content="A registry of C++ libraries and projects."
+    />
+  </head>
+
+  <body>
+    <main class="home">
+      <header class="hero">
+        <p class="eyebrow">C++ REGISTRY</p>
+
+        <h1>Find C++ projects.</h1>
+
+        <p class="subtitle">
+          A community registry of C++ libraries, tools and projects.
+        </p>
+
+        <div class="search-wrapper">
+          <svg
+            class="search-icon"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            aria-hidden="true"
+          >
+            <circle cx="11" cy="11" r="7" />
+            <path d="m20 20-4-4" />
+          </svg>
+
+          <input
+            id="search"
+            type="search"
+            placeholder="Search projects..."
+            autocomplete="off"
+            autofocus
+          />
+
+          <kbd>/</kbd>
+        </div>
+      </header>
+
+      <section>
+        <div class="results-header">
+          <span id="result-count">
+            {projects.length} projects
+          </span>
+        </div>
+
+        <div id="results" class="results">
+          {projects.map((project) => (
+            <a
+              class="project"
+              href={`/~/${project.owner}/${project.repo}`}
+              data-search={`
+                ${project.repo}
+                ${project.owner}
+                ${project.description ?? ""}
+                ${project.license ?? ""}
+              `.toLowerCase()}
+            >
+              <div class="project-main">
+                <h2>{project.repo}</h2>
+
+                {project.description && (
+                  <p>{project.description}</p>
+                )}
+              </div>
+
+              <div class="project-meta">
+                <span>{project.owner}</span>
+
+                {project.license && (
+                  <span class="license">
+                    {project.license}
+                  </span>
+                )}
+              </div>
+            </a>
+          ))}
+        </div>
+
+        <div id="no-results" class="no-results" hidden>
+          <h2>No projects found</h2>
+          <p>Try a different search term.</p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const input = document.querySelector("#search");
+      const results = document.querySelector("#results");
+      const noResults = document.querySelector("#no-results");
+      const resultCount = document.querySelector("#result-count");
+      const projects = Array.from(
+        document.querySelectorAll(".project")
+      );
+
+      function search(query) {
+        const normalized = query
+          .trim()
+          .toLowerCase();
+
+        let visible = 0;
+
+        for (const project of projects) {
+          const text = project.dataset.search ?? "";
+          const matches = !normalized || text.includes(normalized);
+
+          project.hidden = !matches;
+
+          if (matches) {
+            visible++;
+          }
+        }
+
+        noResults.hidden = visible !== 0;
+
+        resultCount.textContent =
+          `${visible} ${visible === 1 ? "project" : "projects"}`;
+      }
+
+      input.addEventListener("input", () => {
+        search(input.value);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (
+          event.key === "/" &&
+          document.activeElement !== input
+        ) {
+          event.preventDefault();
+          input.focus();
+        }
+
+        if (
+          event.key === "Escape" &&
+          document.activeElement === input
+        ) {
+          input.value = "";
+          search("");
+          input.blur();
+        }
+      });
+    </script>
+  </body>
+</html>

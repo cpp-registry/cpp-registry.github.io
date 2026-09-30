@@ -1,0 +1,68 @@
+---
+import registry from "../../../../registry.json";
+
+import "../../../styles/global.css";
+
+export function getStaticPaths() {
+  return Object.values(registry).map((project) => ({
+    params: {
+      username: project.owner,
+      repo: project.repo,
+    },
+    props: {
+      project,
+    },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>{project.repo} — C++ Registry</title>
+    <meta
+      name="description"
+      content={project.description ?? `${project.repo} by ${project.owner}`}
+    />
+  </head>
+
+  <body>
+    <main>
+      <nav>
+        <a href="/">C++ Registry</a>
+        /
+        <a href={`/~/${project.owner}`}>{project.owner}</a>
+        /
+        {project.repo}
+      </nav>
+
+      <h1>{project.repo}</h1>
+
+      {project.description && (
+        <p>{project.description}</p>
+      )}
+
+      <p>
+        by <a href={`https://github.com/${project.owner}`}>
+          {project.owner}
+        </a>
+      </p>
+
+      {project.license && (
+        <p>
+          License: <strong>{project.license}</strong>
+        </p>
+      )}
+
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View on GitHub →
+      </a>
+    </main>
+  </body>
+</html>
