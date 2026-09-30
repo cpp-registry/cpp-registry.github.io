@@ -1,6 +1,6 @@
 {
   "cpp-registry/tinyfiledialogs": {
-    "description": "inputbox password WIN OSX GTK QT Console VCPKG C# Lua R Fortran Pascal",
+    "description": "(mirror) inputbox password WIN OSX GTK QT Console VCPKG C# Lua R Fortran Pascal",
     "license": "zlib/libpng License",
     "language": "C",
     "owner": "cpp-registry",
@@ -15,6 +15,22 @@
     "owner": "fltk",
     "repo": "fltk",
     "url": "https://github.com/fltk/fltk"
+  },
+  "immediate-mode-ui/nuklear": {
+    "description": "A single-header ANSI C immediate mode cross-platform GUI library",
+    "language": "C",
+    "owner": "immediate-mode-ui",
+    "repo": "nuklear",
+    "url": "https://github.com/immediate-mode-ui/nuklear"
+  },
+  "jbeder/yaml-cpp": {
+    "description": "A YAML parser and emitter in C++",
+    "language": "C++",
+    "license": "MIT",
+    "cppstd": 11,
+    "owner": "jbeder",
+    "repo": "yaml-cpp",
+    "url": "https://github.com/jbeder/yaml-cpp"
   },
   "meemknight/gl2d": {
     "description": "a simple 2d library made in opengl",
@@ -58,10 +74,20 @@
     "repo": "safesave",
     "url": "https://github.com/meemknight/safesave"
   },
+  "nlohmann/json": {
+    "language": "C++",
+    "cppstd": 11,
+    "description": "JSON for Modern C++",
+    "license": "MIT",
+    "owner": "nlohmann",
+    "repo": "json",
+    "url": "https://github.com/nlohmann/json"
+  },
   "shadowdara/argparser": {
     "description": "little argparser libary in C, port of the argparser libary from finder in go",
     "license": "MIT",
     "language": "C",
+    "libtype": "header+source",
     "owner": "shadowdara",
     "repo": "argparser",
     "url": "https://github.com/shadowdara/argparser"
@@ -70,6 +96,7 @@
     "description": "all ansi colors as a header file",
     "license": "MIT",
     "language": "C++",
+    "libtype": "single-header",
     "owner": "shadowdara",
     "repo": "colors-cpp",
     "url": "https://github.com/shadowdara/colors-cpp"
