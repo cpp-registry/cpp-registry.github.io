@@ -3,7 +3,10 @@
 name: Build & Deploy Astro Site
 
 on:
-  push:
+  workflow_run:
+    workflows: ["Update"]
+    types:
+      - completed
     branches:
       - main
 
