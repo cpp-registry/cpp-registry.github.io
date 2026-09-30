@@ -49,6 +49,22 @@
     "repo": "gl3d",
     "url": "https://github.com/meemknight/gl3d"
   },
+  "meemknight/profilerlib": {
+    "description": "",
+    "language": "C++",
+    "cppstd": 17,
+    "owner": "meemknight",
+    "repo": "profilerlib",
+    "url": "https://github.com/meemknight/profilerlib"
+  },
+  "cpp-registry/tinyfiledialogs": {
+    "description": "inputbox password WIN OSX GTK QT Console VCPKG C# Lua R Fortran Pascal",
+    "license": "zlib/libpng License",
+    "language": "C",
+    "owner": "cpp-registry",
+    "repo": "tinyfiledialogs",
+    "url": "https://github.com/cpp-registry/tinyfiledialogs"
+  },
   "shadowdara/argparser": {
     "description": "little argparser libary in C, port of the argparser libary from finder in go",
     "license": "MIT",
