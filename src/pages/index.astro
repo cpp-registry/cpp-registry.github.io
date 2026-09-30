@@ -111,14 +111,7 @@ const projects = Object.entries(registry).map(([id, project]) => ({
             <a
               class="project"
               href={`/~/${project.owner}/${project.repo}`}
-              data-search={`
-    ${project.repo}
-    ${project.owner}
-    ${project.description ?? ""}
-    ${project.license ?? ""}
-    ${project.language ?? project.langauge ?? ""}
-    ${project.libtype ?? ""}
-  `.toLowerCase()}
+              data-search={`${project.repo} ${project.owner} ${project.description ?? ""} ${project.license ?? ""} ${project.language ?? project.langauge ?? ""} ${project.libtype ?? ""}`.toLowerCase()}
               data-language={project.language ?? project.langauge ?? ""}
               data-license={project.license ?? ""}
               data-cppstd={project.cppstd ?? ""}
