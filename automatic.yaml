@@ -124,6 +124,10 @@ raysan5:
       description: "A simple and easy-to-use library to enjoy videogames programming"
       language: C
       license: zlib
+    raygui:
+      description: "A simple and easy-to-use immediate-mode gui library"
+      language: C
+      license: zlib
 
 ArthurSonzogni:
   repos:
@@ -620,32 +624,8 @@ gnutls:
       license: LGPL-2.1
 
 #
-# Game Engines / Game Frameworks
+# Game Frameworks / Rendering
 #
-godotengine:
-  repos:
-    godot:
-      description: "Godot Engine - Multi-platform 2D and 3D game engine"
-      language: C++
-      license: MIT
-      cppstd: 17
-
-EpicGames:
-  repos:
-    UnrealEngine:
-      description: "Unreal Engine source code (access requires linking your GitHub account with an Epic Games account)"
-      language: C++
-      license: Unreal Engine EULA
-      cppstd: 17
-
-o3de:
-  repos:
-    o3de:
-      description: "Open 3D Engine (O3DE) is an Apache 2.0-licensed multi-platform 3D engine for AAA-quality games and simulations"
-      language: C++
-      license: Apache-2.0
-      cppstd: 17
-
 OGRECave:
   repos:
     ogre:
@@ -688,21 +668,6 @@ bkaradzic:
       license: BSD-2-Clause
       cppstd: 11
 
-flaxengine:
-  repos:
-    FlaxEngine:
-      description: "Flax Engine - multi-platform 3D game engine"
-      language: C++
-      license: Flax Engine EULA
-
-GodotJolt:
-  repos:
-    godot-jolt:
-      description: "Godot extension that lets you use Jolt Physics in Godot 4"
-      language: C++
-      license: MIT
-      cppstd: 17
-
 jrouwe:
   repos:
     JoltPhysics:
@@ -710,13 +675,6 @@ jrouwe:
       language: C++
       license: MIT
       cppstd: 17
-
-raysan5-extras:
-  repos:
-    raygui:
-      description: "A simple and easy-to-use immediate-mode gui library"
-      language: C
-      license: zlib
 
 wicked-engine:
   repos:
@@ -733,10 +691,3 @@ ValveSoftware:
       language: C++
       license: BSD-3-Clause
       cppstd: 11
-
-libretro:
-  repos:
-    RetroArch:
-      description: "Cross-platform, sophisticated frontend for the libretro API. Licensed GPLv3"
-      language: C
-      license: GPL-3.0
