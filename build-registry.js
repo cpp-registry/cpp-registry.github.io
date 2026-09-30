@@ -71,12 +71,16 @@ for (const [username, enabled] of Object.entries(users)) {
   }
 }
 
+const sortedRegistry = Object.fromEntries(
+  Object.entries(registry).sort(([a], [b]) => a.localeCompare(b)),
+);
+
 await fs.writeFile(
   OUTPUT_FILE,
-  JSON.stringify(registry, null, 2) + "\n",
+  JSON.stringify(sortedRegistry, null, 2) + "\n",
   "utf8",
 );
 
 console.log(
-  `\nWrote ${Object.keys(registry).length} repositories to ${OUTPUT_FILE}`,
+  `\nWrote ${Object.keys(sortedRegistry).length} repositories to ${OUTPUT_FILE}`,
 );
