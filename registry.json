@@ -109,6 +109,15 @@
     "repo": "colors-cpp",
     "url": "https://github.com/shadowdara/colors-cpp"
   },
+  "shadowdara/cppm": {
+    "description": "package searcher and reader for cpp-registry",
+    "license": "MIT",
+    "language": "C++",
+    "cppstd": 20,
+    "owner": "shadowdara",
+    "repo": "cppm",
+    "url": "https://github.com/shadowdara/cppm"
+  },
   "shadowdara/keyvalueparser": {
     "description": "a simple KeyValueParser Libary written in C++",
     "license": "MIT",
@@ -137,7 +146,7 @@
   },
   "wxwidgets/wxwidgets": {
     "description": "Cross-Platform C++ GUI Library",
-    "langauge": "C++",
+    "language": "C++",
     "owner": "wxwidgets",
     "repo": "wxwidgets",
     "url": "https://github.com/wxwidgets/wxwidgets"
