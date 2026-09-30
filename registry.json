@@ -118,6 +118,15 @@
     "repo": "keyvalueparser",
     "url": "https://github.com/shadowdara/keyvalueparser"
   },
+  "shadowdara/respack": {
+    "description": "Resource bundler into pack files for releases",
+    "license": "MIT",
+    "language": "C++",
+    "cppstd": 20,
+    "owner": "shadowdara",
+    "repo": "respack",
+    "url": "https://github.com/shadowdara/respack"
+  },
   "weuritz8u/base32": {
     "license": "MIT",
     "description": "de- and endcoder for base32 in C++ 20",
