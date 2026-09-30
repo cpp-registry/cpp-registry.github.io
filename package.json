@@ -1,5 +1,5 @@
 {
-  "name": "",
+  "name": "Cpp Registry",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "update": "node build-registry.js"
   },
   "dependencies": {
     "@shadowdara/dlib": "^0.0.4",
