@@ -8,6 +8,11 @@
 # Available Libary types:
 # - single-header
 # - header+source
+#
+# Available os
+# - win
+# - mac
+# - lin
 
 fltk:
   repos:
@@ -16,6 +21,15 @@ fltk:
       license: FLTK License
       description: "FLTK - Fast Light Tool Kit - https://github.com/fltk/fltk - cross platform GUI development"
       language: C++
+
+giovannidicanio:
+  repos:
+    winreg:
+      license: MIT
+      cppstd: 17
+      language: C++
+      description: "Convenient high-level C++ wrapper around the Windows Registry API"
+      os: ["win"]
 
 glfw:
   repos:
