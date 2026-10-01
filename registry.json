@@ -231,6 +231,19 @@
     "url": "https://github.com/gabime/spdlog",
     "automatic_registered": true
   },
+  "giovannidicanio/winreg": {
+    "license": "MIT",
+    "cppstd": 17,
+    "language": "C++",
+    "description": "Convenient high-level C++ wrapper around the Windows Registry API",
+    "os": [
+      "win"
+    ],
+    "owner": "giovannidicanio",
+    "repo": "winreg",
+    "url": "https://github.com/giovannidicanio/winreg",
+    "automatic_registered": true
+  },
   "glfw/glfw": {
     "license": "zlib",
     "language": "C",
