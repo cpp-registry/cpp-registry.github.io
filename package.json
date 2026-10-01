@@ -18,9 +18,11 @@
     "@astrojs/sitemap": "^3.7.4",
     "@playform/compress": "^0.2.5",
     "@shadowdara/dlib": "^0.0.4",
+    "@tailwindcss/vite": "^4.3.3",
     "astro": "^7.3.5",
     "astro-seo": "^1.2.0",
-    "js-yaml": "^5.4.2"
+    "js-yaml": "^5.4.2",
+    "rollup-plugin-visualizer": "^7.1.1"
   },
   "allowScripts": {
     "esbuild": true
