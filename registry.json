@@ -167,7 +167,7 @@
     "owner": "drogonframework",
     "repo": "drogon",
     "url": "https://github.com/drogonframework/drogon",
-    "stars": 14310,
+    "stars": 14311,
     "automatic_registered": true
   },
   "epezent/implot": {
@@ -835,7 +835,7 @@
     "owner": "SRombauts",
     "repo": "SQLiteCpp",
     "url": "https://github.com/SRombauts/SQLiteCpp",
-    "stars": 2786,
+    "stars": null,
     "automatic_registered": true
   },
   "Tencent/rapidjson": {
@@ -857,7 +857,7 @@
     "owner": "ThePhD",
     "repo": "sol2",
     "url": "https://github.com/ThePhD/sol2",
-    "stars": 5150,
+    "stars": null,
     "automatic_registered": true
   },
   "thestk/rtaudio": {
