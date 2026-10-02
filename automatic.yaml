@@ -158,6 +158,13 @@ ArthurSonzogni:
       license: MIT
       cppstd: 17
 
+"zpl-c":
+  repos:
+    enet:
+      description: "⚡️ ENet reliable UDP networking library"
+      language: c
+      license: MIT
+
 #
 # Mathe / Physik / 3D
 #
