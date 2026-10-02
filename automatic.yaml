@@ -84,6 +84,13 @@ meemknight:
       language: C++
       cppstd: 17
 
+nicbarker:
+  repos:
+    clay:
+      language: C
+      license: Zlib
+      description: "High performance UI layout library in C."
+
 nlohmann:
   repos:
     json:
