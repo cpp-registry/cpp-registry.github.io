@@ -532,7 +532,7 @@
   },
   "nicbarker/clay": {
     "language": "C",
-    "license": "Zlib",
+    "license": "zlib",
     "description": "High performance UI layout library in C.",
     "owner": "nicbarker",
     "repo": "clay",
