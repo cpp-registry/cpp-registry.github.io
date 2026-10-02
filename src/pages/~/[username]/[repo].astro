@@ -1,6 +1,7 @@
 ---
 import registry from "../../../../registry.json";
 import Layout from "../../../layouts/Layout.astro";
+import Star from "../../../assets/star.svg";
 
 import "../../../styles/global.css";
 
@@ -68,6 +69,14 @@ const { project } = Astro.props;
     <a href={project.url} target="_blank" rel="noopener noreferrer">
       View on GitHub →
     </a>
+    
+    {
+      project.stars && (
+        <p>
+          Github Stars: <strong>{project.stars}</strong> <Star />
+        </p>
+      )
+    }
 
     {
       project.automatic_registered && (
