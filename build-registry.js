@@ -14,6 +14,36 @@ const automatic = yaml.load(await fs.readFile(AUTOMATIC_FILE, "utf8")) ?? {};
 
 const registry = {};
 
+// Function to get the Github stars
+async function getGitHubStars(username, repo) {
+  try {
+    const response = await fetch(
+      `https://api.github.com/repos/${username}/${repo}`,
+      {
+        headers: {
+          Accept: "application/vnd.github+json",
+          "User-Agent": "cpp-registry",
+        },
+      },
+    );
+
+    if (!response.ok) {
+      console.warn(
+        `  Could not fetch stars for ${username}/${repo}: HTTP ${response.status}`,
+      );
+      return null;
+    }
+
+    const data = await response.json();
+    return data.stargazers_count ?? 0;
+  } catch (error) {
+    console.warn(
+      `  Failed to fetch stars for ${username}/${repo}: ${error.message}`,
+    );
+    return null;
+  }
+}
+
 // Manuelle Registrierungen aus automatic.yaml
 for (const [username, user] of Object.entries(automatic)) {
   if (!user?.repos || typeof user.repos !== "object") {
@@ -21,14 +51,17 @@ for (const [username, user] of Object.entries(automatic)) {
   }
 
   for (const [repo, info] of Object.entries(user.repos)) {
-    registry[`${username}/${repo}`] = {
-      ...info,
-      owner: username,
-      repo,
-      url: `https://github.com/${username}/${repo}`,
-      automatic_registered: true,
-    };
-  }
+	  const stars = await getGitHubStars(username, repo);
+
+	  registry[`${username}/${repo}`] = {
+		...info,
+		owner: username,
+		repo,
+		url: `https://github.com/${username}/${repo}`,
+		stars,
+		automatic_registered: true,
+	  };
+	}
 }
 
 console.log(`Loaded ${Object.keys(registry).length} manual repositories`);
@@ -58,6 +91,8 @@ for (const [username, enabled] of Object.entries(users)) {
     }
 
     for (const [repo, info] of Object.entries(data.repos)) {
+		const stars = await getGitHubStars(username, repo);
+		
       // Automatische Registrierung überschreibt
       // eine eventuell vorhandene manuelle Registrierung.
       registry[`${username}/${repo}`] = {
@@ -65,6 +100,7 @@ for (const [username, enabled] of Object.entries(users)) {
         owner: username,
         repo,
         url: `https://github.com/${username}/${repo}`,
+        stars,
       };
     }
   } catch (error) {
