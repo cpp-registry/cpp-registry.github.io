@@ -530,6 +530,15 @@
     "url": "https://github.com/nemtrif/utfcpp",
     "automatic_registered": true
   },
+  "nicbarker/clay": {
+    "language": "C",
+    "license": "Zlib",
+    "description": "High performance UI layout library in C.",
+    "owner": "nicbarker",
+    "repo": "clay",
+    "url": "https://github.com/nicbarker/clay",
+    "automatic_registered": true
+  },
   "nlohmann/json": {
     "language": "C++",
     "cppstd": 11,
