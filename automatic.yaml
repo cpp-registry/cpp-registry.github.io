@@ -88,7 +88,7 @@ nicbarker:
   repos:
     clay:
       language: C
-      license: Zlib
+      license: zlib
       description: "High performance UI layout library in C."
 
 nlohmann:
