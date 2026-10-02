@@ -28,18 +28,29 @@ async function getGitHubStars(username, repo) {
     );
 
     if (!response.ok) {
+      const body = await response.text();
+
       console.warn(
         `  Could not fetch stars for ${username}/${repo}: HTTP ${response.status}`,
       );
+
+      console.warn(`  Response: ${body}`);
+
+      console.warn(
+        `  Rate limit: ${response.headers.get("x-ratelimit-remaining")}/${response.headers.get("x-ratelimit-limit")}`,
+      );
+
       return null;
     }
 
     const data = await response.json();
+
     return data.stargazers_count ?? 0;
   } catch (error) {
     console.warn(
       `  Failed to fetch stars for ${username}/${repo}: ${error.message}`,
     );
+
     return null;
   }
 }

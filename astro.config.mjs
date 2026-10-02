@@ -15,12 +15,12 @@ export default defineConfig({
   integrations: [
     sitemap(),
     (await import("@playform/compress")).default({
-      // CSS: false,
-      // HTML: false,
-      // Image: false,
-      // JavaScript: false,
+      CSS: false,
+      HTML: false,
+      Image: false,
+      JavaScript: false,
       JSON: true,
-      // SVG: false,
+      SVG: false,
     }),
     mdx(),
         AstroPWA({

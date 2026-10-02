@@ -1,0 +1,20 @@
+---
+import registry from "../../registry.json";
+
+let fullstars = 0;
+let projcount = 0;
+
+for (const key in registry) {
+    const entry = registry[key];
+
+    if (entry.stars != null) {
+        fullstars += entry.stars;
+    }
+
+    projcount++;
+}
+---
+
+<h2>
+    Accumulated Github Stars {fullstars} from {projcount} projects!
+</h2>
