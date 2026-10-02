@@ -114,7 +114,7 @@
     "owner": "chriskohlhoff",
     "repo": "asio",
     "url": "https://github.com/chriskohlhoff/asio",
-    "stars": 6212,
+    "stars": null,
     "automatic_registered": true
   },
   "CLIUtils/CLI11": {
@@ -167,7 +167,7 @@
     "owner": "drogonframework",
     "repo": "drogon",
     "url": "https://github.com/drogonframework/drogon",
-    "stars": 14313,
+    "stars": null,
     "automatic_registered": true
   },
   "epezent/implot": {
@@ -329,7 +329,7 @@
     "owner": "gulrak",
     "repo": "filesystem",
     "url": "https://github.com/gulrak/filesystem",
-    "stars": 1570,
+    "stars": null,
     "automatic_registered": true
   },
   "immediate-mode-ui/nuklear": {
@@ -338,7 +338,7 @@
     "owner": "immediate-mode-ui",
     "repo": "nuklear",
     "url": "https://github.com/immediate-mode-ui/nuklear",
-    "stars": 11430,
+    "stars": 11432,
     "automatic_registered": true
   },
   "jarro2783/cxxopts": {
@@ -435,7 +435,7 @@
     "owner": "libcpr",
     "repo": "cpr",
     "url": "https://github.com/libcpr/cpr",
-    "stars": 7448,
+    "stars": null,
     "automatic_registered": true
   },
   "libsdl-org/SDL": {
@@ -592,7 +592,7 @@
     "owner": "nicbarker",
     "repo": "clay",
     "url": "https://github.com/nicbarker/clay",
-    "stars": 18207,
+    "stars": 18208,
     "automatic_registered": true
   },
   "nlohmann/json": {
@@ -624,7 +624,7 @@
     "owner": "ocornut",
     "repo": "imgui",
     "url": "https://github.com/ocornut/imgui",
-    "stars": 76463,
+    "stars": 76464,
     "automatic_registered": true
   },
   "OGRECave/ogre": {
@@ -752,7 +752,7 @@
     "owner": "raysan5",
     "repo": "raylib",
     "url": "https://github.com/raysan5/raylib",
-    "stars": 34937,
+    "stars": 34938,
     "automatic_registered": true
   },
   "SFML/SFML": {
@@ -1013,7 +1013,7 @@
     "owner": "yhirose",
     "repo": "cpp-httplib",
     "url": "https://github.com/yhirose/cpp-httplib",
-    "stars": 16887,
+    "stars": null,
     "automatic_registered": true
   },
   "zeromq/cppzmq": {
@@ -1024,7 +1024,7 @@
     "owner": "zeromq",
     "repo": "cppzmq",
     "url": "https://github.com/zeromq/cppzmq",
-    "stars": 2337,
+    "stars": null,
     "automatic_registered": true
   },
   "zeux/pugixml": {
@@ -1035,6 +1035,16 @@
     "repo": "pugixml",
     "url": "https://github.com/zeux/pugixml",
     "stars": 4654,
+    "automatic_registered": true
+  },
+  "zpl-c/enet": {
+    "description": "⚡️ ENet reliable UDP networking library",
+    "language": "c",
+    "license": "MIT",
+    "owner": "zpl-c",
+    "repo": "enet",
+    "url": "https://github.com/zpl-c/enet",
+    "stars": 1097,
     "automatic_registered": true
   }
 }
