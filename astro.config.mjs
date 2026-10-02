@@ -18,7 +18,7 @@ export default defineConfig({
       // HTML: false,
       // Image: false,
       // JavaScript: false,
-      // JSON: true,
+      JSON: true,
       // SVG: false,
     }),
     mdx(),

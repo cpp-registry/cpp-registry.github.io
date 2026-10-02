@@ -2,6 +2,8 @@
 import registry from "../../../../registry.json";
 import Layout from "../../../layouts/Layout.astro";
 import Star from "../../../assets/star.svg";
+import CPPLOGO from "../../../assets/c++logo.svg";
+import CLOGO from "../../../assets/clogo.svg";
 
 import "../../../styles/global.css";
 
@@ -50,11 +52,19 @@ const { project } = Astro.props;
       )
     }
 
+    <!-- Programming Language + Logos -->
     {
       project.language && (
-        <p>
-          Language: <strong>{project.language}</strong>
-        </p>
+        <>
+        <!--
+          {project.language === "C++" && <CPPLOGO />}
+          {project.language === "C" && <CLOGO />}
+           -->
+
+          <p>
+            Language: <strong>{project.language}</strong>
+          </p>
+        </>
       )
     }
 

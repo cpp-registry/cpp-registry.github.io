@@ -1,0 +1,42 @@
+<svg
+  width="64"
+  height="64"
+  viewBox="0 0 64 64"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-label="Programming Languages"
+>
+  <!-- Hintergrund -->
+  <rect width="64" height="64" rx="14" fill="#18181B"/>
+
+  <!-- Code-Klammern -->
+  <path
+    d="M24 18L13 32L24 46"
+    stroke="#60A5FA"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <path
+    d="M40 18L51 32L40 46"
+    stroke="#A78BFA"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  />
+
+  <!-- Slash -->
+  <path
+    d="M36 15L28 49"
+    stroke="#F4F4F5"
+    stroke-width="4"
+    stroke-linecap="round"
+  />
+
+  <!-- Kleine Punkte für mehrere Languages -->
+  <circle cx="20" cy="53" r="2" fill="#60A5FA"/>
+  <circle cx="32" cy="53" r="2" fill="#A78BFA"/>
+  <circle cx="44" cy="53" r="2" fill="#F472B6"/>
+</svg>
+
