@@ -1,0 +1,599 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+// Einzelne Astro-Seite: JSON / YAML / TOML / XML  ->  C++ constexpr
+// Ablegen als src/pages/index.astro (oder beliebiger Seitenname). Keine weiteren Dateien nötig.
+// YAML- und TOML-Parser werden zur Laufzeit von esm.sh geladen, XML parst der Browser selbst.
+const title = "Struktur nach C++ constexpr";
+---
+
+<Layout
+  title={title}
+  description="JSON, YAML, TOML oder XML einfügen. Heraus kommen Structs und eine constexpr-Variable."
+>
+  <main>
+    <header>
+      <h1>{title}</h1>
+      <p>
+        JSON, YAML, TOML oder XML einfügen. Heraus kommen Structs und eine <code
+          >constexpr</code
+        >-Variable.
+      </p>
+    </header>
+
+    <div class="panes">
+      <section class="pane">
+        <div class="bar">
+          <div class="seg" role="group" aria-label="Eingabeformat">
+            <button data-fmt="auto" aria-pressed="true">Auto</button>
+            <button data-fmt="json" aria-pressed="false">JSON</button>
+            <button data-fmt="yaml" aria-pressed="false">YAML</button>
+            <button data-fmt="toml" aria-pressed="false">TOML</button>
+            <button data-fmt="xml" aria-pressed="false">XML</button>
+          </div>
+          <span id="badge" class="badge" aria-live="polite"></span>
+          <button id="sample" class="ghost">Beispiel laden</button>
+        </div>
+        <textarea
+          id="in"
+          spellcheck="false"
+          aria-label="Eingabe"
+          placeholder="Hier Daten einfügen"></textarea>
+        <div class="opts">
+          <label>Variablenname <input id="name" placeholder="data" /></label>
+          <label>Namespace <input id="ns" placeholder="optional" /></label>
+          <label class="chk"
+            ><input id="des" type="checkbox" checked /> Designated Initializers (C++20)</label
+          >
+          <label class="chk"
+            ><input id="inl" type="checkbox" />
+            <code>inline</code> + <code>#pragma once</code></label
+          >
+          <label class="chk"
+            ><input id="infer" type="checkbox" checked /> XML: Zahlen und Booleans
+            erkennen</label
+          >
+        </div>
+      </section>
+
+      <section class="pane">
+        <div class="bar">
+          <strong>C++17 / C++20</strong>
+          <button id="copy" class="primary">Code kopieren</button>
+        </div>
+        <p id="err" class="err" role="alert"></p>
+        <pre><code id="out" /></pre>
+      </section>
+    </div>
+
+    <details>
+      <summary>Wie wird umgewandelt?</summary>
+      <ul>
+        <li>
+          Objekte werden zu <code>struct</code>s, gleiche Strukturen teilen sich
+          einen Typ.
+        </li>
+        <li>
+          Arrays werden zu <code>std::array&lt;T, N&gt;</code>. Elemente müssen
+          zusammenpassen: Zahlen werden zu <code>double</code>, Objekte werden
+          zusammengeführt.
+        </li>
+        <li>
+          Fehlende Felder und <code>null</code> werden zu <code
+            >std::optional</code
+          >. Strings werden zu <code>std::string_view</code>, Ganzzahlen zu <code
+            >std::int64_t</code
+          >.
+        </li>
+        <li>
+          Verschachtelte Arrays mit unterschiedlicher Länge sind nicht möglich,
+          weil <code>std::array</code> eine feste Größe braucht.
+        </li>
+        <li>
+          XML: Attribute heißen <code>attr_name</code>, Text neben Kindelementen
+          heißt <code>_text</code>, wiederholte Elemente werden zu Arrays.
+        </li>
+      </ul>
+    </details>
+  </main>
+
+  <style is:global></style>
+
+  <script is:inline type="module">
+    // ---------- Parser-Bibliotheken (nur YAML und TOML) ----------
+    let yaml, toml;
+    const libs = Promise.all([
+      import("https://esm.sh/js-yaml@4.1.0"),
+      import("https://esm.sh/smol-toml@1.3.1"),
+    ])
+      .then(([y, t]) => {
+        yaml = y.default ?? y;
+        toml = t;
+      })
+      .catch(() => {});
+
+    const $ = (id) => document.getElementById(id);
+    let fmt = "auto";
+
+    // ---------- Bezeichner ----------
+    const KW = new Set(
+      (
+        "alignas alignof and and_eq asm auto bitand bitor bool break case catch char class compl concept const " +
+        "consteval constexpr const_cast continue decltype default delete do double dynamic_cast else enum explicit export extern " +
+        "false float for friend goto if inline int long mutable namespace new noexcept not not_eq nullptr operator or or_eq private " +
+        "protected public register reinterpret_cast requires return short signed sizeof static static_assert static_cast struct " +
+        "switch template this thread_local throw true try typedef typeid typename union unsigned using virtual void volatile " +
+        "wchar_t while xor xor_eq NULL"
+      ).split(" "),
+    );
+    const ident = (s) => {
+      let r = String(s)
+        .replace(/[^A-Za-z0-9_]/g, "_")
+        .replace(/__+/g, "_");
+      if (!r) r = "_";
+      if (/^\d/.test(r)) r = "_" + r;
+      if (KW.has(r)) r += "_";
+      return r;
+    };
+    const pascal = (s) =>
+      ident(
+        String(s)
+          .split(/[^A-Za-z0-9]+/)
+          .filter(Boolean)
+          .map((w) => w[0].toUpperCase() + w.slice(1))
+          .join("") || "Type",
+      );
+
+    // ---------- Typ-Inferenz ----------
+    function infer(v, path) {
+      if (v === null || v === undefined) return { k: "null" };
+      if (v instanceof Date) return { k: "str" };
+      switch (typeof v) {
+        case "boolean":
+          return { k: "bool" };
+        case "bigint":
+          return { k: "int" };
+        case "number":
+          return Number.isInteger(v) && Math.abs(v) <= Number.MAX_SAFE_INTEGER
+            ? { k: "int" }
+            : { k: "float" };
+        case "string":
+          return { k: "str" };
+      }
+      if (Array.isArray(v)) {
+        let el = { k: "empty" };
+        v.forEach((x, i) => {
+          el = merge(el, infer(x, path + "[" + i + "]"), path + "[]");
+        });
+        return { k: "arr", elem: el, n: v.length };
+      }
+      const fields = new Map();
+      for (const [k, x] of Object.entries(v))
+        fields.set(k, infer(x, path + "." + k));
+      return { k: "obj", fields };
+    }
+
+    function merge(a, b, path) {
+      if (!a || a.k === "empty") return b;
+      if (b.k === "empty") return a;
+      if (a.k === "null" && b.k === "null") return a;
+      if (a.k === "null") return { ...b, opt: true };
+      if (b.k === "null") return { ...a, opt: true };
+      const opt = a.opt || b.opt || undefined;
+      if (a.k === b.k) {
+        if (a.k === "obj") {
+          const f = new Map();
+          for (const k of new Set([...a.fields.keys(), ...b.fields.keys()])) {
+            const x = a.fields.get(k),
+              y = b.fields.get(k);
+            f.set(
+              k,
+              x && y ? merge(x, y, path + "." + k) : { ...(x || y), opt: true },
+            );
+          }
+          return { k: "obj", fields: f, opt };
+        }
+        if (a.k === "arr") {
+          if (a.n !== b.n)
+            throw new Error(
+              `Arrays mit unterschiedlicher Länge bei ${path || "(root)"}: ${a.n} und ${b.n}. std::array braucht eine feste Größe.`,
+            );
+          return {
+            k: "arr",
+            elem: merge(a.elem, b.elem, path + "[]"),
+            n: a.n,
+            opt,
+          };
+        }
+        return { ...a, opt };
+      }
+      if (
+        (a.k === "int" && b.k === "float") ||
+        (a.k === "float" && b.k === "int")
+      )
+        return { k: "float", opt };
+      throw new Error(
+        `Inkompatible Typen bei ${path || "(root)"}: ${a.k} und ${b.k}`,
+      );
+    }
+
+    function cppType(t) {
+      let s;
+      switch (t.k) {
+        case "null":
+          s = "std::nullptr_t";
+          break;
+        case "bool":
+          s = "bool";
+          break;
+        case "int":
+          s = "std::int64_t";
+          break;
+        case "float":
+          s = "double";
+          break;
+        case "str":
+          s = "std::string_view";
+          break;
+        case "empty":
+          s = "int";
+          break;
+        case "obj":
+          s = t.cppName;
+          break;
+        case "arr":
+          s = `std::array<${cppType(t.elem)}, ${t.n}>`;
+          break;
+      }
+      return t.opt ? `std::optional<${s}>` : s;
+    }
+
+    function nameTypes(t, hint, ctx) {
+      if (t.k === "arr") return nameTypes(t.elem, hint, ctx);
+      if (t.k !== "obj") return;
+      const used = new Set();
+      t.idents = new Map();
+      for (const [k, f] of t.fields) {
+        let id = ident(k);
+        const base = id;
+        let i = 2;
+        while (used.has(id)) id = base + "_" + i++;
+        used.add(id);
+        t.idents.set(k, id);
+        nameTypes(f, k, ctx);
+      }
+      const sig = [...t.fields]
+        .map(([k, f]) => t.idents.get(k) + ":" + cppType(f))
+        .join(";");
+      if (ctx.sigs.has(sig)) {
+        t.cppName = ctx.sigs.get(sig);
+        return;
+      }
+      let name = pascal(hint);
+      const base = name;
+      let i = 2;
+      while (ctx.names.has(name)) name = base + i++;
+      ctx.names.add(name);
+      ctx.sigs.set(sig, name);
+      t.cppName = name;
+      ctx.structs.push(t);
+    }
+
+    // ---------- Literale ----------
+    function cstr(s) {
+      let r = '"';
+      for (const ch of s) {
+        const c = ch.codePointAt(0);
+        if (ch === "\\") r += "\\\\";
+        else if (ch === '"') r += '\\"';
+        else if (ch === "\n") r += "\\n";
+        else if (ch === "\r") r += "\\r";
+        else if (ch === "\t") r += "\\t";
+        else if (c < 32 || c === 127)
+          r += "\\" + c.toString(8).padStart(3, "0");
+        else r += ch;
+      }
+      return r + '"';
+    }
+    function fnum(v) {
+      const n = Number(v);
+      if (Number.isNaN(n)) return "std::numeric_limits<double>::quiet_NaN()";
+      if (!Number.isFinite(n))
+        return (n < 0 ? "-" : "") + "std::numeric_limits<double>::infinity()";
+      let s = String(n);
+      if (!/[.e]/i.test(s)) s += ".0";
+      return s;
+    }
+
+    function lit(v, t, o, ind) {
+      if (v === null || v === undefined)
+        return t.opt ? "std::nullopt" : t.k === "null" ? "nullptr" : "{}";
+      let s;
+      switch (t.k) {
+        case "bool":
+          s = v ? "true" : "false";
+          break;
+        case "int":
+          s = String(v);
+          break;
+        case "float":
+          s = fnum(v);
+          break;
+        case "str":
+          s = cstr(v instanceof Date ? v.toISOString() : String(v));
+          break;
+        case "null":
+          s = "nullptr";
+          break;
+        case "arr": {
+          const items = v.map((x) => lit(x, t.elem, o, ind + "  "));
+          if (!items.length) {
+            s = "{}";
+            break;
+          }
+          const one = items.join(", ");
+          s =
+            !one.includes("\n") && one.length + ind.length < 72
+              ? `{{ ${one} }}`
+              : `{{\n${items.map((i) => ind + "  " + i).join(",\n")}\n${ind}}}`;
+          break;
+        }
+        case "obj": {
+          const lines = [...t.fields].map(([k, ft]) => {
+            const id = t.idents.get(k);
+            const val = lit(v[k], ft, o, ind + "  ");
+            return (
+              ind +
+              "  " +
+              (o.designated ? `.${id} = ${val}` : `/* ${id} */ ${val}`)
+            );
+          });
+          s = lines.length ? `{\n${lines.join(",\n")}\n${ind}}` : "{}";
+          break;
+        }
+        default:
+          s = "{}";
+      }
+      if (t.opt && (t.k === "obj" || t.k === "arr"))
+        s = cppType({ ...t, opt: false }) + s;
+      return s;
+    }
+
+    function generate(data, o) {
+      const root = infer(data, "");
+      const ctx = { sigs: new Map(), names: new Set(), structs: [] };
+      const name = ident(o.name || "data");
+      let hint = pascal(name);
+      if (hint === name) hint += "_t";
+      nameTypes(root, hint, ctx);
+
+      let body = "";
+      for (const s of ctx.structs) {
+        const members = [...s.fields]
+          .map(([k, f]) => `    ${cppType(f)} ${s.idents.get(k)};`)
+          .join("\n");
+        body += `struct ${s.cppName} {\n${members}${members ? "\n" : ""}};\n\n`;
+      }
+      const kw = (o.inline ? "inline " : "") + "constexpr";
+      body += `${kw} ${cppType(root)} ${name} = ${lit(data, root, o, "")};\n`;
+
+      if (o.ns)
+        body = `namespace ${ident(o.ns)} {\n\n${body}\n} // namespace ${ident(o.ns)}\n`;
+
+      const inc = [];
+      if (/std::array/.test(body)) inc.push("array");
+      if (/std::int64_t/.test(body)) inc.push("cstdint");
+      if (/std::nullptr_t/.test(body)) inc.push("cstddef");
+      if (/numeric_limits/.test(body)) inc.push("limits");
+      if (/std::optional|std::nullopt/.test(body)) inc.push("optional");
+      if (/std::string_view/.test(body)) inc.push("string_view");
+      inc.sort();
+      const head =
+        (o.inline ? "#pragma once\n\n" : "") +
+        inc.map((i) => `#include <${i}>`).join("\n") +
+        (inc.length ? "\n\n" : "");
+      return `// erzeugt aus ${o.format.toUpperCase()}\n` + head + body;
+    }
+
+    // ---------- Eingabe parsen ----------
+    const scal = (t) => {
+      if (!$("infer").checked || t === "") return t;
+      if (t === "true" || t === "false") return t === "true";
+      if (/^-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d+)?$/.test(t)) return Number(t);
+      return t;
+    };
+    function xmlNode(el) {
+      const kids = [...el.children];
+      const attrs = [...el.attributes].filter(
+        (a) => !a.name.startsWith("xmlns"),
+      );
+      const text = [...el.childNodes]
+        .filter((n) => n.nodeType === 3 || n.nodeType === 4)
+        .map((n) => n.nodeValue)
+        .join("")
+        .trim();
+      if (!kids.length && !attrs.length) return scal(text);
+      const o = {};
+      for (const a of attrs) o["attr_" + a.localName] = scal(a.value);
+      const groups = new Map();
+      for (const k of kids) {
+        if (!groups.has(k.localName)) groups.set(k.localName, []);
+        groups.get(k.localName).push(k);
+      }
+      for (const [n, list] of groups)
+        o[n] = list.length > 1 ? list.map(xmlNode) : xmlNode(list[0]);
+      if (text) o._text = scal(text);
+      return o;
+    }
+
+    const parsers = {
+      json: (s) => ({ data: JSON.parse(s) }),
+      yaml: (s) => {
+        if (!yaml)
+          throw new Error(
+            "js-yaml konnte nicht geladen werden. Internetverbindung prüfen.",
+          );
+        return { data: yaml.load(s) };
+      },
+      toml: (s) => {
+        if (!toml)
+          throw new Error(
+            "smol-toml konnte nicht geladen werden. Internetverbindung prüfen.",
+          );
+        return { data: toml.parse(s) };
+      },
+      xml: (s) => {
+        const d = new DOMParser().parseFromString(s, "application/xml");
+        const pe = d.querySelector("parsererror");
+        if (pe) throw new Error("XML: " + pe.textContent.trim().split("\n")[0]);
+        const r = d.documentElement,
+          v = xmlNode(r);
+        return {
+          data: v && typeof v === "object" ? v : { [r.localName]: v },
+          rootName: r.localName,
+        };
+      },
+    };
+
+    function parse(src) {
+      if (fmt !== "auto") return { ...parsers[fmt](src), format: fmt };
+      const order = src.trim().startsWith("<")
+        ? ["xml"]
+        : ["json", "toml", "yaml"];
+      let first, last;
+      for (const f of order) {
+        try {
+          return { ...parsers[f](src), format: f };
+        } catch (e) {
+          first ??= e;
+          last = e;
+        }
+      }
+      throw src.trim().startsWith("{") ? first : last;
+    }
+
+    // ---------- UI ----------
+    function run() {
+      const src = $("in").value,
+        err = $("err"),
+        out = $("out");
+      err.textContent = "";
+      out.style.opacity = "";
+      if (!src.trim()) {
+        out.textContent = "";
+        $("badge").textContent = "";
+        return;
+      }
+      try {
+        const { data, format, rootName } = parse(src);
+        $("badge").textContent = format.toUpperCase();
+        out.textContent = generate(data, {
+          name: $("name").value.trim() || rootName || "data",
+          ns: $("ns").value.trim(),
+          designated: $("des").checked,
+          inline: $("inl").checked,
+          format,
+        });
+      } catch (e) {
+        $("badge").textContent = "";
+        err.textContent = e.message;
+        out.style.opacity = "0.4";
+      }
+    }
+
+    const samples = {
+      json: JSON.stringify(
+        {
+          name: "demo",
+          version: 2,
+          debug: false,
+          ratio: 0.75,
+          server: { host: "localhost", ports: [8080, 8081] },
+          users: [
+            { id: 1, name: "Ada", email: null },
+            { id: 2, name: "Linus", email: "l@example.org", admin: true },
+          ],
+        },
+        null,
+        2,
+      ),
+      yaml: [
+        "name: demo",
+        "version: 2",
+        "debug: false",
+        "ratio: 0.75",
+        "server:",
+        "  host: localhost",
+        "  ports: [8080, 8081]",
+        "users:",
+        "  - id: 1",
+        "    name: Ada",
+        "  - id: 2",
+        "    name: Linus",
+        "    admin: true",
+      ].join("\n"),
+      toml: [
+        'name = "demo"',
+        "version = 2",
+        "debug = false",
+        "ratio = 0.75",
+        "",
+        "[server]",
+        'host = "localhost"',
+        "ports = [8080, 8081]",
+        "",
+        "[[users]]",
+        "id = 1",
+        'name = "Ada"',
+        "",
+        "[[users]]",
+        "id = 2",
+        'name = "Linus"',
+        "admin = true",
+      ].join("\n"),
+      xml: [
+        '<config version="2" debug="false">',
+        "  <name>demo</name>",
+        '  <server host="localhost">',
+        "    <port>8080</port>",
+        "    <port>8081</port>",
+        "  </server>",
+        '  <user id="1">Ada</user>',
+        '  <user id="2" admin="true">Linus</user>',
+        "</config>",
+      ].join("\n"),
+    };
+
+    document.querySelectorAll("[data-fmt]").forEach((b) =>
+      b.addEventListener("click", () => {
+        fmt = b.dataset.fmt;
+        document
+          .querySelectorAll("[data-fmt]")
+          .forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+        run();
+      }),
+    );
+    $("sample").addEventListener("click", () => {
+      $("in").value = samples[fmt === "auto" ? "json" : fmt];
+      run();
+    });
+    $("copy").addEventListener("click", async (e) => {
+      try {
+        await navigator.clipboard.writeText($("out").textContent);
+        e.target.textContent = "Kopiert";
+      } catch {
+        e.target.textContent = "Kopieren nicht möglich";
+      }
+      setTimeout(() => {
+        e.target.textContent = "Code kopieren";
+      }, 1400);
+    });
+    ["in", "name", "ns", "des", "inl", "infer"].forEach((id) =>
+      $(id).addEventListener("input", run),
+    );
+
+    $("in").value = samples.json;
+    run();
+    libs.then(run);
+  </script>
+</Layout>
