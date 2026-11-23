@@ -7,7 +7,7 @@
     "owner": "abseil",
     "repo": "abseil-cpp",
     "url": "https://github.com/abseil/abseil-cpp",
-    "stars": 18209,
+    "stars": 18210,
     "automatic_registered": true
   },
   "ArthurSonzogni/FTXUI": {
@@ -18,7 +18,7 @@
     "owner": "ArthurSonzogni",
     "repo": "FTXUI",
     "url": "https://github.com/ArthurSonzogni/FTXUI",
-    "stars": 10907,
+    "stars": 10905,
     "automatic_registered": true
   },
   "assimp/assimp": {
@@ -29,7 +29,7 @@
     "owner": "assimp",
     "repo": "assimp",
     "url": "https://github.com/assimp/assimp",
-    "stars": 13336,
+    "stars": 13337,
     "automatic_registered": true
   },
   "B-Con/crypto-algorithms": {
@@ -92,7 +92,7 @@
     "owner": "bulletphysics",
     "repo": "bullet3",
     "url": "https://github.com/bulletphysics/bullet3",
-    "stars": 14885,
+    "stars": 14891,
     "automatic_registered": true
   },
   "catchorg/Catch2": {
@@ -114,7 +114,7 @@
     "owner": "chriskohlhoff",
     "repo": "asio",
     "url": "https://github.com/chriskohlhoff/asio",
-    "stars": 6241,
+    "stars": 6242,
     "automatic_registered": true
   },
   "CLIUtils/CLI11": {
@@ -210,7 +210,7 @@
     "owner": "fltk",
     "repo": "fltk",
     "url": "https://github.com/fltk/fltk",
-    "stars": 2345,
+    "stars": 2346,
     "automatic_registered": true
   },
   "FluidSynth/fluidsynth": {
@@ -241,7 +241,7 @@
     "owner": "g-truc",
     "repo": "glm",
     "url": "https://github.com/g-truc/glm",
-    "stars": 11314,
+    "stars": 11316,
     "automatic_registered": true
   },
   "gabime/spdlog": {
@@ -252,7 +252,7 @@
     "owner": "gabime",
     "repo": "spdlog",
     "url": "https://github.com/gabime/spdlog",
-    "stars": 29829,
+    "stars": 29835,
     "automatic_registered": true
   },
   "giovannidicanio/winreg": {
@@ -296,7 +296,7 @@
     "owner": "google",
     "repo": "benchmark",
     "url": "https://github.com/google/benchmark",
-    "stars": 10532,
+    "stars": 10533,
     "automatic_registered": true
   },
   "google/googletest": {
@@ -307,7 +307,7 @@
     "owner": "google",
     "repo": "googletest",
     "url": "https://github.com/google/googletest",
-    "stars": 39768,
+    "stars": 39769,
     "automatic_registered": true
   },
   "greg7mdp/parallel-hashmap": {
@@ -338,7 +338,7 @@
     "owner": "immediate-mode-ui",
     "repo": "nuklear",
     "url": "https://github.com/immediate-mode-ui/nuklear",
-    "stars": 11525,
+    "stars": 11526,
     "automatic_registered": true
   },
   "jarro2783/cxxopts": {
@@ -349,7 +349,7 @@
     "owner": "jarro2783",
     "repo": "cxxopts",
     "url": "https://github.com/jarro2783/cxxopts",
-    "stars": 4828,
+    "stars": 4829,
     "automatic_registered": true
   },
   "jbeder/yaml-cpp": {
@@ -435,7 +435,7 @@
     "owner": "libcpr",
     "repo": "cpr",
     "url": "https://github.com/libcpr/cpr",
-    "stars": 7485,
+    "stars": 7486,
     "automatic_registered": true
   },
   "libsdl-org/SDL": {
@@ -445,7 +445,7 @@
     "owner": "libsdl-org",
     "repo": "SDL",
     "url": "https://github.com/libsdl-org/SDL",
-    "stars": 17051,
+    "stars": 17054,
     "automatic_registered": true
   },
   "libsndfile/libsndfile": {
@@ -592,7 +592,7 @@
     "owner": "nicbarker",
     "repo": "clay",
     "url": "https://github.com/nicbarker/clay",
-    "stars": 18445,
+    "stars": 18447,
     "automatic_registered": true
   },
   "nlohmann/json": {
@@ -603,7 +603,7 @@
     "owner": "nlohmann",
     "repo": "json",
     "url": "https://github.com/nlohmann/json",
-    "stars": 50981,
+    "stars": 50985,
     "automatic_registered": true
   },
   "nothings/stb": {
@@ -613,7 +613,7 @@
     "owner": "nothings",
     "repo": "stb",
     "url": "https://github.com/nothings/stb",
-    "stars": 35109,
+    "stars": 35110,
     "automatic_registered": true
   },
   "ocornut/imgui": {
@@ -624,7 +624,7 @@
     "owner": "ocornut",
     "repo": "imgui",
     "url": "https://github.com/ocornut/imgui",
-    "stars": 77261,
+    "stars": 77263,
     "automatic_registered": true
   },
   "OGRECave/ogre": {
@@ -657,7 +657,7 @@
     "owner": "oneapi-src",
     "repo": "oneTBB",
     "url": "https://github.com/oneapi-src/oneTBB",
-    "stars": 6793,
+    "stars": 6794,
     "automatic_registered": true
   },
   "open-source-parsers/jsoncpp": {
@@ -679,7 +679,7 @@
     "owner": "opencv",
     "repo": "opencv",
     "url": "https://github.com/opencv/opencv",
-    "stars": 91683,
+    "stars": 91687,
     "automatic_registered": true
   },
   "openssl/openssl": {
@@ -752,7 +752,7 @@
     "owner": "raysan5",
     "repo": "raylib",
     "url": "https://github.com/raysan5/raylib",
-    "stars": 35766,
+    "stars": 35768,
     "automatic_registered": true
   },
   "SFML/SFML": {
@@ -1024,7 +1024,7 @@
     "owner": "zeromq",
     "repo": "cppzmq",
     "url": "https://github.com/zeromq/cppzmq",
-    "stars": 2345,
+    "stars": null,
     "automatic_registered": true
   },
   "zeux/pugixml": {
